@@ -143,3 +143,10 @@ bouncing die is sensitive to initial conditions this changed the contact sequenc
 now holds the exact default; the fidelity test uses RelTol 1e-12.
 
 Full suite: 113/113 PASS (110 s).
+
+## 2026-09-21 — Owner review pass
+
+Re-verified from a fresh run: environment, 114/114 tests, examples, figures. Added
+`examples/playground.m` (editable sections, animated) with an e2e test,
+`docs/FILE_GUIDE.md` (every file, safe knobs) and `docs/validation/REQUIREMENTS_CHECK.md`
+(20 assignment clauses, all MET with evidence).

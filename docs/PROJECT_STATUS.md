@@ -20,7 +20,7 @@ PHASE 10 — COMPLETE (local release candidate). Awaiting owner review; GitHub p
 | 7 | four-bar | COMPLETE — 95 tests PASS total |
 | 8 | visualization | COMPLETE — 101 tests PASS total |
 | 9 | GUI | COMPLETE — 110 tests PASS total |
-| 10 | end-to-end validation, docs, release prep | COMPLETE — 113 tests PASS |
+| 10 | end-to-end validation, docs, release prep | COMPLETE — 114 tests PASS |
 
 ## Verified facts
 

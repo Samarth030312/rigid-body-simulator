@@ -49,3 +49,22 @@ for d = {'core', 'dice', 'robot', 'fourbar'}
     end
 end
 end
+
+function testPlaygroundScriptRuns(tc)
+% The tinkering script must run as shipped (without animation, figures hidden).
+root = fileparts(fileparts(fileparts(mfilename('fullpath'))));
+src = fileread(fullfile(root, 'examples', 'playground.m'));
+src = strrep(src, 'ANIMATE = true;', 'ANIMATE = false;');
+src = strrep(src, 'clear; close all;', '');
+tmp = [tempname '.m'];
+fid = fopen(tmp, 'w'); fwrite(fid, strrep(src, 'mfilename(''fullpath'')', ...
+    ['''' fullfile(root, 'examples', 'playground') '''']));
+fclose(fid);
+c = onCleanup(@() delete(tmp));
+set(groot, 'DefaultFigureVisible', 'off');
+c2 = onCleanup(@() set(groot, 'DefaultFigureVisible', 'on'));
+[d, n] = fileparts(tmp); addpath(d); c3 = onCleanup(@() rmpath(d));
+evalc(n);
+verifyGreaterThanOrEqual(tc, numel(findall(groot, 'Type', 'figure')), 3);
+close(findall(groot, 'Type', 'figure'));
+end

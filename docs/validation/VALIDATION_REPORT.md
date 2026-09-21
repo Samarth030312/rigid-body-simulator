@@ -15,7 +15,7 @@ Command: `./scripts/run_tests.sh` — result recorded in `VALIDATION_MATRIX.md`.
 | 5 | applications | 12 dice + 14 3R + 14 four-bar | dice free flight analytic; contact passive; varied emergent outcomes; **3R RNE = lecture 2R equations exactly**; four-bar closure ≤ 1e-14 m; independent energy-equation check of FBD dynamics | PASS |
 | 6 | visualization | 6 + visual review | drawn geometry equals simulated state | PASS |
 | 7 | GUI | 9 + visual review | GUI results bit-identical to core; exact default fidelity; error handling; playback | PASS |
-| 8 | end-to-end | 3 | examples from clean path; launcher; automated layer-dependency check | PASS |
+| 8 | end-to-end | 4 | examples from clean path; launcher; automated layer-dependency check | PASS |
 
 ## Reference results (`examples/runExamples.m`)
 
