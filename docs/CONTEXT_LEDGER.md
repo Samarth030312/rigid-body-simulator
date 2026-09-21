@@ -35,7 +35,7 @@ Evidence renders are regenerated on demand (not committed):
 
 ## Immediate next action
 
-Phase 7: four-bar (`fourbar/`): Freudenstein position solution (L5-6/s22) with explicit assembly branch, full loop-closure residual (L5-6/s21), velocity/acceleration from the differentiated constraint, Grashof classification, dynamics by per-link Newton–Euler + FBD (ADR-0011), energy/power validation.
+Phase 8: visualization (`visualization/`): draw functions that take an axes handle + result struct (dice with pips and frames, 3R links/frames/trajectory, four-bar links/joints/coupler curve) and dashboard plot functions (energy, residuals, torques, states); headless figure tests.
 rigidBodyDerivative, energy/momentum) and `core/integration` (RK4 + projection), with
 Level 3–4 tests (gravity analytic, torque-free top L16/s7–8, Euler-angle vs rotation-matrix
 integration of L7-9/s16, RK4 convergence order).

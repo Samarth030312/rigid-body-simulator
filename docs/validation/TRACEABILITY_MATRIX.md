@@ -25,8 +25,8 @@ VALIDATION_MATRIX.md).
 | R-D16 | Dice dots graphics | L2-4/s13 face layout | `diceGeometry` (pips); rendering Phase 8 | `testFaceLayoutMatchesLecture`, `testFaceWindingAndPips` | IN PROGRESS (geometry validated) |
 | R-R1 | 3R kinematics | L5-6/s13, L7-9/s44–53 | `robotForwardKinematics`, `robotToolKinematics` | `test_robot` kinematics tests | VALIDATED |
 | R-R2 | 3R dynamics | L20-21/s5–19 | `robotNewtonEuler`, `robotMassMatrix`, `robotDynamics`, `simulateRobot` | 2R reduction, virtual work, energy tests | VALIDATED |
-| R-F1 | Four-bar kinematics | L5-6/s20–22 | — | — | NOT STARTED |
-| R-F2 | Four-bar dynamics | EXT (ADR-0011) using L17-19, L10-13/s20 | — | — | NOT STARTED |
+| R-F1 | Four-bar kinematics | L5-6/s20–22 | `fourbarPosition`, `fourbarKinematics`, `fourbarGrashof` | `test_fourbar` position/velocity tests | VALIDATED |
+| R-F2 | Four-bar dynamics | EXT (ADR-0011) using L17-19, L10-13/s20 | `fourbarNewtonEuler`, `fourbarEnergy`, `simulateFourbar` | energy-equation cross-check, virtual work, energy balance | VALIDATED |
 | R-G1 | Interactive GUI | — | — | — | NOT STARTED |
 | R-G2 | Buttons, dropdown menus, boxes | — | — | — | NOT STARTED |
 | R-G3 | Dashboards of simulated motions and outcomes | — | — | — | NOT STARTED |

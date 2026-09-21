@@ -90,3 +90,19 @@ Tests: `tests/robot/test_robot.m` (14). Full suite 81/81 PASS.
 Findings: energy balance with trapezoid-integrated power was limited by output sampling
 (error ∝ h²); fixed by integrating work with the state — residual now falls ~20× per dt
 halving (RK4 order), proving dynamics/work consistency.
+
+## 2026-09-21 — Phase 7: four-bar mechanism
+
+Code: `fourbar/` — fourbarDefaultParams (Grashof crank-rocker), fourbarValidateParams,
+fourbarGrashof (EXT), fourbarPosition (closed-form solution of the lecture Freudenstein
+constraint with fixed branch; residuals of all lecture loop-closure equations; transmission
+angle), fourbarKinematics (differentiated vector loop; toggle detection), fourbarNewtonEuler
+(9×9 FBD system; forward or inverse dynamics; joint reactions), fourbarEnergy (effective
+inertia; independent energy equation), simulateFourbar (free / torque / constant-speed
+drive; work integrated with the state).
+
+Tests: `tests/fourbar/test_fourbar.m` (14). Full suite 95/95 PASS, no warnings.
+
+Findings: finite-difference test initially failed across the ±π wrap of φ1 (test artifact,
+fixed with circular differences); toggle check moved before the linear solve so singular
+configurations raise `fourbar:singular` without a MATLAB warning.

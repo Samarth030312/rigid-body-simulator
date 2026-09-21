@@ -4,7 +4,7 @@ Last updated: 2026-09-21
 
 ## Current Phase
 
-PHASE 7 — Four-bar mechanism (next).
+PHASE 8 — Visualization (next).
 
 ## Phase gates
 
@@ -17,8 +17,8 @@ PHASE 7 — Four-bar mechanism (next).
 | 4 | inertia, gravity, Newton–Euler, integration | COMPLETE — 55 tests PASS total |
 | 5 | dice | COMPLETE — physics + outcome; rendering in Phase 8 |
 | 6 | 3R manipulator | COMPLETE — 81 tests PASS total |
-| 7 | four-bar | NEXT |
-| 8 | visualization | NOT STARTED |
+| 7 | four-bar | COMPLETE — 95 tests PASS total |
+| 8 | visualization | NEXT |
 | 9 | GUI | NOT STARTED |
 | 10 | end-to-end validation, docs, release prep | NOT STARTED |
 
