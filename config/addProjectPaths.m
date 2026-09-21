@@ -1,10 +1,14 @@
 function addProjectPaths()
-% addProjectPaths Add project source directories to MATLAB path.
+%ADDPROJECTPATHS Add project source directories to the MATLAB path.
+%   Adds core/, dice/, robot/, fourbar/, visualization/, app/ and config/
+%   (with subfolders). Missing folders are skipped so the function works at
+%   every development phase.
 root = projectRoot();
-addpath(genpath(fullfile(root, 'core')));
-addpath(genpath(fullfile(root, 'dice')));
-addpath(genpath(fullfile(root, 'robot')));
-addpath(genpath(fullfile(root, 'fourbar')));
-addpath(genpath(fullfile(root, 'visualization')));
-addpath(genpath(fullfile(root, 'app')));
+dirs = {'core', 'dice', 'robot', 'fourbar', 'visualization', 'app', 'config'};
+for i = 1:numel(dirs)
+    d = fullfile(root, dirs{i});
+    if isfolder(d)
+        addpath(genpath(d));
+    end
+end
 end
