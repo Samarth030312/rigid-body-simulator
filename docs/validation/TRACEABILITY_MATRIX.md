@@ -22,11 +22,11 @@ VALIDATION_MATRIX.md).
 | R-D13 | Gravity | L10-13/s8 | force `m g` | projectile, energy tests | VALIDATED (core) |
 | R-D14 | Initial position + orientation | L2-4, L7-9/s20 | `diceInitialState` (body/space-fixed, any sequence) | `testInitialOrientationBodyAndSpace` | VALIDATED |
 | R-D15 | Initial linear + angular velocity | L7-9/s4–10 | `diceInitialState` (ω in body or space components) | `testInitialAngularVelocityFrames` | VALIDATED |
-| R-D16 | Dice dots graphics | L2-4/s13 face layout | `diceGeometry` (pips); rendering Phase 8 | `testFaceLayoutMatchesLecture`, `testFaceWindingAndPips` | IN PROGRESS (geometry validated) |
+| R-D16 | Dice dots graphics | L2-4/s13 face layout | `diceGeometry`, `vizDiceScene` (pips on faces, state-driven) | `test_dice` layout tests, `test_visualization` | VALIDATED |
 | R-R1 | 3R kinematics | L5-6/s13, L7-9/s44–53 | `robotForwardKinematics`, `robotToolKinematics` | `test_robot` kinematics tests | VALIDATED |
 | R-R2 | 3R dynamics | L20-21/s5–19 | `robotNewtonEuler`, `robotMassMatrix`, `robotDynamics`, `simulateRobot` | 2R reduction, virtual work, energy tests | VALIDATED |
 | R-F1 | Four-bar kinematics | L5-6/s20–22 | `fourbarPosition`, `fourbarKinematics`, `fourbarGrashof` | `test_fourbar` position/velocity tests | VALIDATED |
 | R-F2 | Four-bar dynamics | EXT (ADR-0011) using L17-19, L10-13/s20 | `fourbarNewtonEuler`, `fourbarEnergy`, `simulateFourbar` | energy-equation cross-check, virtual work, energy balance | VALIDATED |
 | R-G1 | Interactive GUI | — | — | — | NOT STARTED |
 | R-G2 | Buttons, dropdown menus, boxes | — | — | — | NOT STARTED |
-| R-G3 | Dashboards of simulated motions and outcomes | — | — | — | NOT STARTED |
+| R-G3 | Dashboards of simulated motions and outcomes | — | `vizDashboard` (4-panel per application); GUI integration Phase 9 | `test_visualization` | IN PROGRESS |

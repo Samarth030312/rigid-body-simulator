@@ -4,7 +4,7 @@ Last updated: 2026-09-21
 
 ## Current Phase
 
-PHASE 8 — Visualization (next).
+PHASE 9 — GUI (next).
 
 ## Phase gates
 
@@ -18,8 +18,8 @@ PHASE 8 — Visualization (next).
 | 5 | dice | COMPLETE — physics + outcome; rendering in Phase 8 |
 | 6 | 3R manipulator | COMPLETE — 81 tests PASS total |
 | 7 | four-bar | COMPLETE — 95 tests PASS total |
-| 8 | visualization | NEXT |
-| 9 | GUI | NOT STARTED |
+| 8 | visualization | COMPLETE — 101 tests PASS total |
+| 9 | GUI | NEXT |
 | 10 | end-to-end validation, docs, release prep | NOT STARTED |
 
 ## Verified facts

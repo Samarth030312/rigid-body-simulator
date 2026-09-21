@@ -106,3 +106,17 @@ Tests: `tests/fourbar/test_fourbar.m` (14). Full suite 95/95 PASS, no warnings.
 Findings: finite-difference test initially failed across the ±π wrap of φ1 (test artifact,
 fixed with circular differences); toggle check moved before the linear solve so singular
 configurations raise `fourbar:singular` without a MATLAB warning.
+
+## 2026-09-21 — Phase 8: visualization
+
+Code: `visualization/` — vizTheme (validated categorical palette; X/Y/Z = red/green/blue
+slots), vizStyleAxes, vizArrow3/vizSetArrow3, vizDiceScene/Update (hgtransform from state,
+pips, frames, trail, V and ω^s arrows, optional follow camera), vizRobotScene/Update
+(links, joints, COMs, frames {i}, tool path, PD/trajectory target ghost),
+vizFourbarScene/Update (ground, links, coupler-COM curve, residual label), vizDashboard
+(4 panels per application, one y-axis each, legends for ≥2 series), vizSetCursor.
+`scripts/make_figures.m` renders `docs/figures/*.png` headlessly.
+
+Tests: `tests/visualization/test_visualization.m` (6). Full suite 101/101 PASS.
+Visual review found and fixed: cursor lines appearing as "data1" in legends; unwrapped
+crank angle in the four-bar label; world-frame labels unclipped in follow view.

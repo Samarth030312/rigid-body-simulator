@@ -35,7 +35,7 @@ Evidence renders are regenerated on demand (not committed):
 
 ## Immediate next action
 
-Phase 8: visualization (`visualization/`): draw functions that take an axes handle + result struct (dice with pips and frames, 3R links/frames/trajectory, four-bar links/joints/coupler curve) and dashboard plot functions (energy, residuals, torques, states); headless figure tests.
+Phase 9: GUI (`app/`): programmatic uifigure (base MATLAB), tabs per application, parameter fields + dropdowns, Run/Reset/Play/Pause/slider, scene + 4-panel dashboard + summary table; callbacks only collect inputs, call simulate* and viz*; errors shown via uialert. Headless GUI test via app object methods.
 rigidBodyDerivative, energy/momentum) and `core/integration` (RK4 + projection), with
 Level 3–4 tests (gravity analytic, torque-free top L16/s7–8, Euler-angle vs rotation-matrix
 integration of L7-9/s16, RK4 convergence order).
