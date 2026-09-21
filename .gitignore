@@ -1,0 +1,39 @@
+# MATLAB
+*.asv
+*.m~
+*.autosave
+matlab_crash_dump*
+hs_err_pid*
+
+# MATLAB generated artifacts
+slprj/
+codegen/
+*.mex*
+*.slxc
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.*
+secrets.*
+
+# Generated simulation output
+data/output/*
+!data/output/.gitkeep
+
+# Local ENR209 source material
+incoming/
+docs/requirements/source/
+docs/lecture_notes/source/
+docs/reference/source_text/
+
+# Claude local machine settings
+.claude/settings.local.json
