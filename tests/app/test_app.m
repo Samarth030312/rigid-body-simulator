@@ -16,7 +16,7 @@ function testFormDefaultsEqualCoreDefaults(tc)
 app = tc.TestData.app;
 p = app.getParams('dice'); d = diceDefaultParams();
 verifyEqual(tc, p.edge, d.edge, 'RelTol', 1e-12);
-verifyEqual(tc, p.mass, d.mass, 'AbsTol', 1e-6);
+verifyEqual(tc, p.mass, d.mass, 'RelTol', 1e-12);   % exact: bounces are sensitive to it
 verifyEqual(tc, p.orientation, d.orientation);
 verifyEqual(tc, p.omega0, d.omega0); verifyEqual(tc, p.omegaFrame, d.omegaFrame);
 r = app.getParams('robot'); dr = robotDefaultParams();

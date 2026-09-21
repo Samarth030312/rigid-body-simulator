@@ -395,7 +395,7 @@ d = diceDefaultParams();
 seqs = {'XYZ', 'XZY', 'YXZ', 'YZX', 'ZXY', 'ZYX', 'XYX', 'XZX', 'YXY', 'YZY', 'ZXZ', 'ZYZ'};
 spec = {
  'edge',    'Edge a (mm)',          d.edge * 1e3, 'num', 'Cube edge length', {}
- 'mass',    'Mass m (g)',           round(d.mass * 1e3, 3), 'num', 'Mass; inertia = m a^2/6 [U] (L14-15/s9)', {}
+ 'mass',    'Mass m (g)',           d.mass * 1e3, 'num', 'Mass; inertia = m a^2/6 [U] (L14-15/s9)', {}
  'r0',      'Position r_C (m)',     d.r0.', 'num', 'Initial COM position in {A} (x, y, z)', {}
  'orientType', 'Rotation type',     'Body-fixed', 'drop', 'Body-fixed = post-multiply, space-fixed = pre-multiply (L2-4/s21-36)', {'Body-fixed', 'Space-fixed'}
  'sequence','Sequence',             d.orientation.sequence, 'drop', 'Order of the three simple rotations', seqs
@@ -502,7 +502,7 @@ switch kind
         rows = {'Top face (outcome)', sprintf('%d', s.finalFace);
                 'Settled', settled;
                 'Face alignment', fmt(s.finalAlignment);
-                'Floor impacts', sprintf('%d', s.bounces);
+                'Contact episodes (sampled)', sprintf('%d', s.bounces);
                 'Max height (m)', fmt(s.maxHeight);
                 'Energy dissipated (J)', fmt(s.energyDissipated);
                 'Max ||R''R - I||', fmt(max(d.orthError));

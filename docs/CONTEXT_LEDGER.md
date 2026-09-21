@@ -35,7 +35,7 @@ Evidence renders are regenerated on demand (not committed):
 
 ## Immediate next action
 
-Phase 10: end-to-end: README (install, run, reproduce), RUNBOOK, user guide, examples script, validation report, preflight script update, final full-suite run.
+All phases complete (local release candidate). Next only on owner request: GitHub push (needs authorisation), MATLAB Online check, optional features.
 rigidBodyDerivative, energy/momentum) and `core/integration` (RK4 + projection), with
 Level 3–4 tests (gravity analytic, torque-free top L16/s7–8, Euler-angle vs rotation-matrix
 integration of L7-9/s16, RK4 convergence order).

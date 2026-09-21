@@ -1,23 +1,46 @@
 # ENR209 Rigid Body Simulator Runbook
 
-## Verification
+## 1. Environment
 
+```bash
+./scripts/check_environment.sh     # prints OS, Git, MATLAB release
+./scripts/verify_sources.sh        # local course sources vs SHA-256 manifest (maintainer only)
 ./scripts/audit_control_plane.sh
-./scripts/verify_sources.sh
-./scripts/check_environment.sh
+```
 
-## Development Order
+## 2. Test and validate
 
-requirements -> lecture evidence -> equations -> implementation -> tests -> physical validation -> visualization -> GUI
+```bash
+./scripts/run_tests.sh             # all levels; exits non-zero on any failure
+./scripts/run_tests.sh core        # subset
+```
 
-## MATLAB
+Record results in `docs/validation/VALIDATION_MATRIX.md` (never mark NOT TESTED as PASS).
 
-Record the MATLAB release, toolbox baseline, and execution status before implementation.
+## 3. Run
 
-## Source Policy
+```matlab
+addpath app; launchRigidBodySimulator          % GUI
+addpath examples; runExamples                  % headless demonstrations
+```
 
-The incoming source files are preserved until permanent copies have been verified.
+## 4. Regenerate figures
 
-## Reproducibility
+```bash
+matlab -batch "addpath('scripts'); make_figures"
+```
 
-A clean user should eventually be able to clone the repository, open MATLAB, configure the path, run validation, launch the application, and reproduce documented demonstrations.
+## 5. Regenerate lecture evidence (maintainer, needs local course files)
+
+```bash
+python3 scripts/extract_source.py <deck.pptx> docs/reference/source_text/<deck>.txt
+soffice --headless --convert-to pdf --outdir <scratch> docs/lecture_notes/source/*.pptx
+pdftoppm -r 80 -png <scratch>/<deck>.pdf <scratch>/png/<deck>/s
+```
+
+Slide renders are derived course material: keep them outside the repository.
+
+## 6. Development order (for changes)
+
+requirements → lecture evidence → conventions check → implementation → tests →
+physical validation → visualization → GUI → documentation → commit.

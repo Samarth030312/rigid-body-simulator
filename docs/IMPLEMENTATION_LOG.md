@@ -128,6 +128,18 @@ Validation, Conventions; form-driven parameters, Run/Reset/Random throw, playbac
 slider, speed, scene + 4-panel dashboard + summary table; uialert on errors),
 `app/launchRigidBodySimulator.m` now opens the GUI (ADR-0014).
 
-Tests: `tests/app/test_app.m` (9). Full suite 116/116 PASS.
+Tests: `tests/app/test_app.m` (9). Full suite 110/110 PASS.
 Review of screenshots: pinned light theme (dark mode hid axis text); shortened a clipped
 legend label.
+
+## 2026-09-21 — Phase 10: end-to-end, documentation, release preparation
+
+Added `examples/runExamples.m` (GUI-free demonstrations), `tests/e2e/test_end_to_end.m`
+(clean-path examples, launcher, automated layer-dependency check), README, RUNBOOK,
+`docs/validation/VALIDATION_REPORT.md`.
+
+Defect found: the GUI form rounded the default dice mass (4.71 g vs 4.7104 g); because a
+bouncing die is sensitive to initial conditions this changed the contact sequence. The form
+now holds the exact default; the fidelity test uses RelTol 1e-12.
+
+Full suite: 113/113 PASS (110 s).
