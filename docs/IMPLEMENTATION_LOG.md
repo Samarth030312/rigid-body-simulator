@@ -41,3 +41,16 @@ Code: `core/math/` (17 functions), `core/kinematics/` (5 functions), `tests/runA
 Tests: `./scripts/run_tests.sh core` → 36/36 PASS.
 
 Next: Phase 4 dynamics + integration.
+
+## 2026-09-21 — Phase 4: dynamics and integration
+
+Code: `core/dynamics/` (inertiaBox, inertiaCube, inertiaRotate, inertiaParallelAxis,
+rbPack/rbUnpack, rigidBodyDerivative, rigidBodyEnergy, rbProjectState),
+`core/integration/` (integrateRK4 with PostStep/OutputEvery/StopFcn, integrateODE45).
+Tests: `test_inertia` (6), `test_rigid_body_dynamics` (11). Full suite 55/55 PASS.
+
+Findings during testing:
+- First cube torque-free tolerance (1e-9) was tighter than the RK4 truncation bound
+  (~5e-9 for the chosen dt); tolerance now derived from the bound.
+- L7-9/s16 plot is not reproducible from the slide's equations (SD-14); implementation
+  proven against the exact constant-ω rotation instead.

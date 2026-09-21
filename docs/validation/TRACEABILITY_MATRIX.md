@@ -14,12 +14,12 @@ VALIDATION_MATRIX.md).
 | R-D5 | Kinematics: body-fixed rotations | L2-4/s21–31, s50, s64 | `rotBodyFixed`, `rotToEuler*` | `test_rotations` (s50, s64) | VALIDATED |
 | R-D6 | Kinematics: rotation matrices | L2-4/s8–20 | `core/math/*` | `test_rotations` | VALIDATED |
 | R-D7 | Angular velocity (kinematics) | L7-9/s5–16 | `core/kinematics/*`, `eulerRates*` | `test_angular_velocity` (s11–13) | VALIDATED |
-| R-D8 | Dynamics: Newton equation | L17-19/s6 | — | — | NOT STARTED |
-| R-D9 | Dynamics: Euler equation | L16/s6 | — | — | NOT STARTED |
-| R-D10 | EOM "fed to the kinematics routines" | L7-9/s14–16 | — | — | NOT STARTED |
-| R-D11 | Mass | L14-15/s4 | — | — | NOT STARTED |
-| R-D12 | Inertia of a cube | L14-15/s9 | — | — | NOT STARTED |
-| R-D13 | Gravity | L10-13/s8 | — | — | NOT STARTED |
+| R-D8 | Dynamics: Newton equation | L17-19/s6 | `rigidBodyDerivative` | projectile analytic test | VALIDATED (core) |
+| R-D9 | Dynamics: Euler equation | L16/s6 | `rigidBodyDerivative` | symmetric top, conservation, dH/dt = M | VALIDATED (core) |
+| R-D10 | EOM "fed to the kinematics routines" | L7-9/s14–16 | `integrateRK4` + `Ṙ = R[ω^b×]` | Level 4 tests | VALIDATED (core) |
+| R-D11 | Mass | L14-15/s4 | parameters | — | IN PROGRESS |
+| R-D12 | Inertia of a cube | L14-15/s9 | `inertiaCube` | `test_inertia` | VALIDATED |
+| R-D13 | Gravity | L10-13/s8 | force `m g` | projectile, energy tests | VALIDATED (core) |
 | R-D14 | Initial position + orientation | L2-4, L7-9/s20 | — | — | NOT STARTED |
 | R-D15 | Initial linear + angular velocity | L7-9/s4–10 | — | — | NOT STARTED |
 | R-D16 | Dice dots graphics | L2-4/s13 face layout | — | — | NOT STARTED |

@@ -4,7 +4,7 @@ Last updated: 2026-09-21
 
 ## Current Phase
 
-PHASE 4 — Newton–Euler dynamics and numerical integration (next).
+PHASE 5 — Dice application (next).
 
 ## Phase gates
 
@@ -14,8 +14,8 @@ PHASE 4 — Newton–Euler dynamics and numerical integration (next).
 | 1 | assignment + lecture analysis, concept map | COMPLETE — `docs/concepts/LECTURE_CONCEPT_MAP.md`, `SOURCE_DEFECTS.md` |
 | 2 | conventions, architecture freeze | COMPLETE — `CONVENTIONS.md`, `architecture.md` (ADR-0006…0013) |
 | 3 | rotation primitives, transforms, kinematics | COMPLETE — 36 tests PASS |
-| 4 | inertia, gravity, Newton–Euler, integration | NEXT |
-| 5 | dice | NOT STARTED |
+| 4 | inertia, gravity, Newton–Euler, integration | COMPLETE — 55 tests PASS total |
+| 5 | dice | NEXT |
 | 6 | 3R manipulator | NOT STARTED |
 | 7 | four-bar | NOT STARTED |
 | 8 | visualization | NOT STARTED |

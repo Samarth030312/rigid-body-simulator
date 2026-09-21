@@ -35,7 +35,7 @@ Evidence renders are regenerated on demand (not committed):
 
 ## Immediate next action
 
-Phase 4: `core/dynamics` (inertiaBox/cube, inertiaRotate, parallel axis, gravity,
+Phase 5: dice application (`dice/`): parameters, initial state from GUI-style inputs (position, space-/body-fixed orientation, V, ω), free flight (lecture model), vertex contact extension (ADR-0012), outcome face, dice geometry with dots.
 rigidBodyDerivative, energy/momentum) and `core/integration` (RK4 + projection), with
 Level 3–4 tests (gravity analytic, torque-free top L16/s7–8, Euler-angle vs rotation-matrix
 integration of L7-9/s16, RK4 convergence order).
