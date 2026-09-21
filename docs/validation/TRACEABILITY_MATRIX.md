@@ -23,8 +23,8 @@ VALIDATION_MATRIX.md).
 | R-D14 | Initial position + orientation | L2-4, L7-9/s20 | `diceInitialState` (body/space-fixed, any sequence) | `testInitialOrientationBodyAndSpace` | VALIDATED |
 | R-D15 | Initial linear + angular velocity | L7-9/s4–10 | `diceInitialState` (ω in body or space components) | `testInitialAngularVelocityFrames` | VALIDATED |
 | R-D16 | Dice dots graphics | L2-4/s13 face layout | `diceGeometry` (pips); rendering Phase 8 | `testFaceLayoutMatchesLecture`, `testFaceWindingAndPips` | IN PROGRESS (geometry validated) |
-| R-R1 | 3R kinematics | L5-6/s13, L7-9/s44–53 | — | — | NOT STARTED |
-| R-R2 | 3R dynamics | L20-21/s5–19 | — | — | NOT STARTED |
+| R-R1 | 3R kinematics | L5-6/s13, L7-9/s44–53 | `robotForwardKinematics`, `robotToolKinematics` | `test_robot` kinematics tests | VALIDATED |
+| R-R2 | 3R dynamics | L20-21/s5–19 | `robotNewtonEuler`, `robotMassMatrix`, `robotDynamics`, `simulateRobot` | 2R reduction, virtual work, energy tests | VALIDATED |
 | R-F1 | Four-bar kinematics | L5-6/s20–22 | — | — | NOT STARTED |
 | R-F2 | Four-bar dynamics | EXT (ADR-0011) using L17-19, L10-13/s20 | — | — | NOT STARTED |
 | R-G1 | Interactive GUI | — | — | — | NOT STARTED |

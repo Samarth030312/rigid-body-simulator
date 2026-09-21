@@ -75,3 +75,18 @@ removed from inner-loop functions only, diagnostics computed lazily, early stop 
 
 Test-authoring errors caught by the suite (fixed in the tests, not the code): swapped
 expected faces for R(X,±90°); an RK4 tolerance tighter than the truncation bound.
+
+## 2026-09-21 — Phase 6: planar 3R manipulator
+
+Code: `robot/` — robotDefaultParams, robotValidateParams, robotForwardKinematics
+(lecture composition), robotToolKinematics (lecture propagation), robotNewtonEuler (RNE
+exactly as L20-21/s10–11, optional tool force), robotMassMatrix (RNE columns),
+robotJointTorque (free / constant / PD ± gravity compensation / computed-torque
+trajectory), robotReference (quintic, EXT), robotDynamics, robotEnergy (independent,
+link-by-link), simulateRobot (actuator + damper work integrated as an internal 7th state).
+
+Tests: `tests/robot/test_robot.m` (14). Full suite 81/81 PASS.
+
+Findings: energy balance with trapezoid-integrated power was limited by output sampling
+(error ∝ h²); fixed by integrating work with the state — residual now falls ~20× per dt
+halving (RK4 order), proving dynamics/work consistency.

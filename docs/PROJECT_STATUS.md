@@ -4,7 +4,7 @@ Last updated: 2026-09-21
 
 ## Current Phase
 
-PHASE 6 — 3R manipulator (next).
+PHASE 7 — Four-bar mechanism (next).
 
 ## Phase gates
 
@@ -16,8 +16,8 @@ PHASE 6 — 3R manipulator (next).
 | 3 | rotation primitives, transforms, kinematics | COMPLETE — 36 tests PASS |
 | 4 | inertia, gravity, Newton–Euler, integration | COMPLETE — 55 tests PASS total |
 | 5 | dice | COMPLETE — physics + outcome; rendering in Phase 8 |
-| 6 | 3R manipulator | NEXT |
-| 7 | four-bar | NOT STARTED |
+| 6 | 3R manipulator | COMPLETE — 81 tests PASS total |
+| 7 | four-bar | NEXT |
 | 8 | visualization | NOT STARTED |
 | 9 | GUI | NOT STARTED |
 | 10 | end-to-end validation, docs, release prep | NOT STARTED |
@@ -32,7 +32,7 @@ PHASE 6 — 3R manipulator (next).
 ## Known limitations / open items
 
 - Four-bar dynamics and dice ground contact are engineering extensions (ADR-0011, 0012).
-- Source defects SD-04, SD-10, SD-11 to be closed by Phase 6 tests.
+- SD-04, SD-10, SD-11 closed by Phase 6 tests.
 
 ## How to verify
 

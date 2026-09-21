@@ -35,7 +35,7 @@ Evidence renders are regenerated on demand (not committed):
 
 ## Immediate next action
 
-Phase 6: planar 3R (`robot/`): FK by lecture composition (L7-9/s49, L5-6/s13), velocity/acceleration propagation (L7-9/s44–53), RNE inverse dynamics (L20-21/s10–11), forward dynamics, 2R reduction test vs L20-21/s19, energy conservation.
+Phase 7: four-bar (`fourbar/`): Freudenstein position solution (L5-6/s22) with explicit assembly branch, full loop-closure residual (L5-6/s21), velocity/acceleration from the differentiated constraint, Grashof classification, dynamics by per-link Newton–Euler + FBD (ADR-0011), energy/power validation.
 rigidBodyDerivative, energy/momentum) and `core/integration` (RK4 + projection), with
 Level 3–4 tests (gravity analytic, torque-free top L16/s7–8, Euler-angle vs rotation-matrix
 integration of L7-9/s16, RK4 convergence order).
