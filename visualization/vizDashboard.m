@@ -17,7 +17,7 @@ switch kind
             yline(axs(1), res.params.edge / 2, ':', 'a/2', 'Color', th.textMuted);
         end
         plotSeries(axs(2), t, [d.kinetic; d.potential + d.spring; d.energy], ...
-            {'kinetic', 'potential + contact spring', 'total'}, 'energy (J)', th, 1:3);
+            {'kinetic', 'potential + spring', 'total'}, 'energy (J)', th, 1:3);
         plotSeries(axs(3), t, d.speed, {'|V_C|'}, 'speed (m/s)', th, 2);
         plotSeries(axs(4), t, d.spin, {'|\omega|'}, 'angular speed (rad/s)', th, 7);
     case 'robot'

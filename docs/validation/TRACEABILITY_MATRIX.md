@@ -27,6 +27,6 @@ VALIDATION_MATRIX.md).
 | R-R2 | 3R dynamics | L20-21/s5–19 | `robotNewtonEuler`, `robotMassMatrix`, `robotDynamics`, `simulateRobot` | 2R reduction, virtual work, energy tests | VALIDATED |
 | R-F1 | Four-bar kinematics | L5-6/s20–22 | `fourbarPosition`, `fourbarKinematics`, `fourbarGrashof` | `test_fourbar` position/velocity tests | VALIDATED |
 | R-F2 | Four-bar dynamics | EXT (ADR-0011) using L17-19, L10-13/s20 | `fourbarNewtonEuler`, `fourbarEnergy`, `simulateFourbar` | energy-equation cross-check, virtual work, energy balance | VALIDATED |
-| R-G1 | Interactive GUI | — | — | — | NOT STARTED |
-| R-G2 | Buttons, dropdown menus, boxes | — | — | — | NOT STARTED |
-| R-G3 | Dashboards of simulated motions and outcomes | — | `vizDashboard` (4-panel per application); GUI integration Phase 9 | `test_visualization` | IN PROGRESS |
+| R-G1 | Interactive GUI | — | `app/RigidBodySimulatorApp.m`, `launchRigidBodySimulator` | `test_app` | VALIDATED |
+| R-G2 | Buttons, dropdown menus, boxes | — | Run/Reset/Random throw/Play buttons, rotation type/sequence/ω-frame/control/drive/branch dropdowns, numeric boxes, check boxes, time slider | `test_app` | VALIDATED |
+| R-G3 | Dashboards of simulated motions and outcomes | — | `vizDashboard` in each tab + summary table (dice outcome, residuals, energy balance) + Validation tab | `test_visualization`, `test_app` | VALIDATED |

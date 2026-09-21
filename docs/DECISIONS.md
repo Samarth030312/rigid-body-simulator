@@ -113,3 +113,15 @@ The 3R and four-bar are planar, but link orientations are still represented as
 and cross-product primitives (and the same conventions) serve all three applications.
 
 Status: Accepted
+
+## ADR-0014 — Programmatic uifigure GUI instead of an App Designer .mlapp
+
+The GUI is `app/RigidBodySimulatorApp.m`, a handle class that builds a `uifigure`
+programmatically (base MATLAB). An `.mlapp` file is a binary archive that cannot be reviewed
+or diffed in Git and is awkward to test. The class is plain text, its public methods
+(`run`, `showSample`, `setField`, `getParams`, `resetForm`, `play`) are exercised headlessly
+by `tests/app/test_app.m`, and callbacks only collect inputs, convert units at the boundary,
+call `simulate*` and pass the result to `viz*`. The app pins the light theme because the
+validated palette targets a light surface (dark-mode MATLAB made axis text unreadable).
+
+Status: Accepted

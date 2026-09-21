@@ -120,3 +120,14 @@ vizFourbarScene/Update (ground, links, coupler-COM curve, residual label), vizDa
 Tests: `tests/visualization/test_visualization.m` (6). Full suite 101/101 PASS.
 Visual review found and fixed: cursor lines appearing as "data1" in legends; unwrapped
 crank angle in the four-bar label; world-frame labels unclipped in follow view.
+
+## 2026-09-21 — Phase 9: GUI
+
+Code: `app/RigidBodySimulatorApp.m` (tabs: Dice, 3R Manipulator, Four-Bar Mechanism,
+Validation, Conventions; form-driven parameters, Run/Reset/Random throw, playback timer,
+slider, speed, scene + 4-panel dashboard + summary table; uialert on errors),
+`app/launchRigidBodySimulator.m` now opens the GUI (ADR-0014).
+
+Tests: `tests/app/test_app.m` (9). Full suite 116/116 PASS.
+Review of screenshots: pinned light theme (dark mode hid axis text); shortened a clipped
+legend label.

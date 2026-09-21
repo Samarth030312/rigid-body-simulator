@@ -1,16 +1,15 @@
-function launchRigidBodySimulator()
-% launchRigidBodySimulator Configure and launch the ENR209 simulator.
-
+function app = launchRigidBodySimulator()
+%LAUNCHRIGIDBODYSIMULATOR Configure the MATLAB path and open the simulator GUI.
+%
+%   launchRigidBodySimulator()          opens the GUI
+%   app = launchRigidBodySimulator();   also returns the app object
+%
+%   The mechanics can also be used without the GUI, e.g.
+%     res = simulateDice(diceDefaultParams());
 root = fileparts(fileparts(mfilename('fullpath')));
-addpath(genpath(fullfile(root, 'core')));
-addpath(genpath(fullfile(root, 'dice')));
-addpath(genpath(fullfile(root, 'robot')));
-addpath(genpath(fullfile(root, 'fourbar')));
-addpath(genpath(fullfile(root, 'visualization')));
-addpath(genpath(fullfile(root, 'config')));
-
-fprintf('ENR209 Rigid Body Simulator\n');
-fprintf('Root: %s\n', root);
-fprintf('Physics engine: foundation stage\n');
-fprintf('GUI: not yet implemented\n');
+addpath(fullfile(root, 'config'));
+addProjectPaths();
+fprintf('ENR209 Rigid Body Simulator (MATLAB %s)\nRoot: %s\n', version('-release'), root);
+a = RigidBodySimulatorApp();
+if nargout > 0, app = a; end
 end

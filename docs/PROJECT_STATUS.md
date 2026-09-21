@@ -4,7 +4,7 @@ Last updated: 2026-09-21
 
 ## Current Phase
 
-PHASE 9 — GUI (next).
+PHASE 10 — End-to-end validation, documentation, release preparation (next).
 
 ## Phase gates
 
@@ -19,8 +19,8 @@ PHASE 9 — GUI (next).
 | 6 | 3R manipulator | COMPLETE — 81 tests PASS total |
 | 7 | four-bar | COMPLETE — 95 tests PASS total |
 | 8 | visualization | COMPLETE — 101 tests PASS total |
-| 9 | GUI | NEXT |
-| 10 | end-to-end validation, docs, release prep | NOT STARTED |
+| 9 | GUI | COMPLETE — 116 tests PASS total |
+| 10 | end-to-end validation, docs, release prep | NEXT |
 
 ## Verified facts
 
