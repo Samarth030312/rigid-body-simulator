@@ -7,8 +7,8 @@ VALIDATION_MATRIX.md).
 
 | ID | Requirement (assignment wording) | Lecture basis | Implementation | Validation | Status |
 |---|---|---|---|---|---|
-| R-D1 | Dice translation | L7-9/s4, L17-19/s6 | — | — | NOT STARTED |
-| R-D2 | Dice rotation | L2-4, L7-9/s5–10 | — | — | NOT STARTED |
+| R-D1 | Dice translation | L7-9/s4, L17-19/s6 | `dice/simulateDice` | `testFreeFlightAnalytic` | VALIDATED |
+| R-D2 | Dice rotation | L2-4, L7-9/s5–10, L16/s6 | `dice/simulateDice` | `testFreeFlightAnalytic`, `testOutcomeEmergesFromDynamics` | VALIDATED |
 | R-D3 | Kinematics: orientation | L2-4/s7–13 | `core/math/rot*` | `test_rotations` | VALIDATED (primitives) |
 | R-D4 | Kinematics: space-fixed rotations | L2-4/s32–36, s44 | `rotSpaceFixed` | `test_rotations` (s44 value, derivation replay) | VALIDATED |
 | R-D5 | Kinematics: body-fixed rotations | L2-4/s21–31, s50, s64 | `rotBodyFixed`, `rotToEuler*` | `test_rotations` (s50, s64) | VALIDATED |
@@ -17,12 +17,12 @@ VALIDATION_MATRIX.md).
 | R-D8 | Dynamics: Newton equation | L17-19/s6 | `rigidBodyDerivative` | projectile analytic test | VALIDATED (core) |
 | R-D9 | Dynamics: Euler equation | L16/s6 | `rigidBodyDerivative` | symmetric top, conservation, dH/dt = M | VALIDATED (core) |
 | R-D10 | EOM "fed to the kinematics routines" | L7-9/s14–16 | `integrateRK4` + `Ṙ = R[ω^b×]` | Level 4 tests | VALIDATED (core) |
-| R-D11 | Mass | L14-15/s4 | parameters | — | IN PROGRESS |
+| R-D11 | Mass | L14-15/s4 | `diceDefaultParams.mass` | static equilibrium test | VALIDATED |
 | R-D12 | Inertia of a cube | L14-15/s9 | `inertiaCube` | `test_inertia` | VALIDATED |
 | R-D13 | Gravity | L10-13/s8 | force `m g` | projectile, energy tests | VALIDATED (core) |
-| R-D14 | Initial position + orientation | L2-4, L7-9/s20 | — | — | NOT STARTED |
-| R-D15 | Initial linear + angular velocity | L7-9/s4–10 | — | — | NOT STARTED |
-| R-D16 | Dice dots graphics | L2-4/s13 face layout | — | — | NOT STARTED |
+| R-D14 | Initial position + orientation | L2-4, L7-9/s20 | `diceInitialState` (body/space-fixed, any sequence) | `testInitialOrientationBodyAndSpace` | VALIDATED |
+| R-D15 | Initial linear + angular velocity | L7-9/s4–10 | `diceInitialState` (ω in body or space components) | `testInitialAngularVelocityFrames` | VALIDATED |
+| R-D16 | Dice dots graphics | L2-4/s13 face layout | `diceGeometry` (pips); rendering Phase 8 | `testFaceLayoutMatchesLecture`, `testFaceWindingAndPips` | IN PROGRESS (geometry validated) |
 | R-R1 | 3R kinematics | L5-6/s13, L7-9/s44–53 | — | — | NOT STARTED |
 | R-R2 | 3R dynamics | L20-21/s5–19 | — | — | NOT STARTED |
 | R-F1 | Four-bar kinematics | L5-6/s20–22 | — | — | NOT STARTED |

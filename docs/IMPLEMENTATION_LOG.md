@@ -54,3 +54,24 @@ Findings during testing:
   (~5e-9 for the chosen dt); tolerance now derived from the bound.
 - L7-9/s16 plot is not reproducible from the slide's equations (SD-14); implementation
   proven against the exact constant-ω rotation instead.
+
+## 2026-09-21 — Phase 5: dice
+
+Code: `dice/` — diceDefaultParams, diceValidateParams (incl. RK4 stability limit for the
+contact stiffness), diceInitialState (body-/space-fixed orientation, ω in body or space
+components), diceGeometry (COM-centred cube, lecture face layout, pip positions),
+diceTopFace, diceContactLoads (EXT: vertex spring-damper + regularised Coulomb friction),
+diceDynamics, DiceRestDetector (early stop once at rest 0.1 s), simulateDice.
+
+Tests: `tests/dice/test_dice.m` (12). Full suite 67/67 PASS.
+
+Physical checks: free flight equals the analytic projectile + fixed-axis rotation
+(isotropic cube inertia ⇒ ω×Iω = 0); total energy including contact springs never
+increases (max per-sample increase ~1e-18 J = round-off); resting COM height equals
+a/2 − mg/(4k).
+
+Performance: default throw ~1 s (was 7.3 s): inertia precomputed, argument validation
+removed from inner-loop functions only, diagnostics computed lazily, early stop at rest.
+
+Test-authoring errors caught by the suite (fixed in the tests, not the code): swapped
+expected faces for R(X,±90°); an RK4 tolerance tighter than the truncation bound.

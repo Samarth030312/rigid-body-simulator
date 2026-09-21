@@ -4,7 +4,7 @@ Last updated: 2026-09-21
 
 ## Current Phase
 
-PHASE 5 — Dice application (next).
+PHASE 6 — 3R manipulator (next).
 
 ## Phase gates
 
@@ -15,8 +15,8 @@ PHASE 5 — Dice application (next).
 | 2 | conventions, architecture freeze | COMPLETE — `CONVENTIONS.md`, `architecture.md` (ADR-0006…0013) |
 | 3 | rotation primitives, transforms, kinematics | COMPLETE — 36 tests PASS |
 | 4 | inertia, gravity, Newton–Euler, integration | COMPLETE — 55 tests PASS total |
-| 5 | dice | NEXT |
-| 6 | 3R manipulator | NOT STARTED |
+| 5 | dice | COMPLETE — physics + outcome; rendering in Phase 8 |
+| 6 | 3R manipulator | NEXT |
 | 7 | four-bar | NOT STARTED |
 | 8 | visualization | NOT STARTED |
 | 9 | GUI | NOT STARTED |
