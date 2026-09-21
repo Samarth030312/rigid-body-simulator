@@ -79,9 +79,9 @@ docs/              requirements, concept map, conventions, decisions, validation
 ## Documentation
 
 | Topic | File |
+|---|---|
 | **Which file does what / where to tinker** | `docs/FILE_GUIDE.md`, `examples/playground.m` |
 | Requirement-by-requirement check | `docs/validation/REQUIREMENTS_CHECK.md` |
-|---|---|
 | Frame/rotation/unit conventions (frozen) | `docs/architecture/CONVENTIONS.md` |
 | Architecture | `docs/architecture/architecture.md` |
 | Lecture concept map + slide defects | `docs/concepts/LECTURE_CONCEPT_MAP.md`, `docs/concepts/SOURCE_DEFECTS.md` |
