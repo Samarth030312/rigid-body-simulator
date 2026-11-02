@@ -14,7 +14,7 @@ tests that check the physics against closed-form answers and conservation laws.*
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 <p align="center">
-  <img src="docs/img/gui_dice.png" width="880"
+  <img src="docs/img/app.png" width="880"
        alt="The lab app: parameter boxes on the left, a 16 mm die mid-bounce above a floor in the centre with its body axes drawn, and four plots on the right showing height, energy, speed and angular speed against time.">
   <br><sub>A 16 mm die, thrown at 0.4 m/s with 33 rad/s of spin. The face it shows at the end
   is read from the simulated orientation; nothing about the outcome is prescribed.</sub>
