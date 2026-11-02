@@ -18,8 +18,8 @@ function out = runExamples(opts)
     ang = deg2rad([60 45 -75]);
     out.Rbody = rbsim.math.rotBodyFixed('XYZ', ang);
     out.Rspace = rbsim.math.rotSpaceFixed('XYZ', ang);
-    say('Body-fixed  X-Y-Z (60,45,-75) deg, cf. :\n'); say('%9.4f %9.4f %9.4f\n', out.Rbody.');
-    say('Space-fixed X-Y-Z (60,45,-75) deg, cf. :\n'); say('%9.4f %9.4f %9.4f\n', out.Rspace.');
+    say('Body-fixed  X-Y-Z (60, 45, -75) deg:\n'); say('%9.4f %9.4f %9.4f\n', out.Rbody.');
+    say('Space-fixed X-Y-Z (60, 45, -75) deg:\n'); say('%9.4f %9.4f %9.4f\n', out.Rspace.');
 
     % 2. Die: free flight in closed form, then with the floor
     p = rbsim.dice.defaults(); p.contact.enabled = false; p.tFinal = 0.3; p.dt = 1e-3;
