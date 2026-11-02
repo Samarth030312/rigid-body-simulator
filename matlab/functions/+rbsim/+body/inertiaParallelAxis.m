@@ -3,17 +3,17 @@ function I_O = inertiaParallelAxis(I_C, m, d)
 %
 %   I_O = inertiaParallelAxis(I_C, m, d)
 %
-%   [I]_O = [I]_C - m [d]^2 ,  [d] = rbsim.math.skew(d)
-%         = [I]_C + m ( (d'd) [U] - d d' )
+%   [I]_O = [I]_C - m [d]^2,  [d] = rbsim.math.skew(d)
+%         = [I]_C + m ((d'd) [U] - d d')
 %
 %   Inputs
-%     I_C : 3x3 inertia about C, kg*m^2 (frame {F}).
-%     m   : mass, kg.
-%     d   : 3x1 vector from C to O (either sign gives the same result), in {F}, m.
+%     I_C: 3x3 inertia about C, kg*m^2 (frame {F}).
+%     m: mass, kg.
+%     d: 3x1 vector from C to O (either sign gives the same result), in {F}, m.
 %   Output
-%     I_O : 3x3 inertia about O, axes parallel to {F}.
+%     I_O: 3x3 inertia about O, axes parallel to {F}.
 %
-%   Source: [LECTURE] L14-15/s8 (the printed (3,3) entry is corrected, SD-05).
+%   Parallel-axis (Huygens-Steiner) theorem.
 arguments
     I_C (3,3) double {mustBeFinite}
     m (1,1) double {mustBeNonnegative, mustBeFinite}

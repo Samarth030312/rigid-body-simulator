@@ -10,8 +10,8 @@ p.dt = 1e-3; p.outputEvery = 1; p.tFinal = 0.5;
 end
 
 % ---------- geometry and face layout ----------
-function testFaceLayoutMatchesLecture(tc)
-% L2-4/s13, s44: +X 4, -X 3, +Y 2, -Y 5, +Z 1, -Z 6.
+function testFaceLayoutIsTheStandardDie(tc)
+%: +X 4, -X 3, +Y 2, -Y 5, +Z 1, -Z 6.
 G = rbsim.dice.geometry(0.02);
 expect = containers.Map({'1 0 0','-1 0 0','0 1 0','0 -1 0','0 0 1','0 0 -1'}, ...
     {4, 3, 2, 5, 1, 6});
@@ -58,11 +58,11 @@ p = rbsim.dice.defaults();
 p.orientation = struct('type', 'body', 'sequence', 'XYZ', 'anglesDeg', [60 45 -75]);
 [~, ~, R] = rbsim.body.unpack(rbsim.dice.initialState(p));
 verifyEqual(tc, R, [0.1830 0.6830 0.7071; -0.3245 0.7209 -0.6124; -0.9280 -0.1174 0.3536], ...
-    'AbsTol', 5e-5);                                       % L2-4/s50
+    'AbsTol', 5e-5);                                       %
 p.orientation.type = 'space';
 [~, ~, R] = rbsim.body.unpack(rbsim.dice.initialState(p));
 verifyEqual(tc, R, [0.1830 0.6415 -0.7450; -0.6830 -0.4621 -0.5657; -0.7071 0.6124 0.3536], ...
-    'AbsTol', 5e-5);                                       % L2-4/s44
+    'AbsTol', 5e-5);                                       %
 end
 
 function testInitialAngularVelocityFrames(tc)
@@ -87,7 +87,7 @@ p = rbsim.dice.defaults(); p.dt = 1e-2;
 verifyError(tc, @() rbsim.dice.simulate(p), 'rbsim:dice:param');          % unstable step
 end
 
-% ---------- free flight: lecture model ----------
+% ---------- free flight: the closed-form model ----------
 function testFreeFlightAnalytic(tc)
 % Newton: projectile; Euler with isotropic cube inertia: w_b constant, rotation
 % about a fixed axis (R = R0 R(w,|w|t)).
@@ -124,7 +124,7 @@ end
 
 function testContactIsPassive(tc)
 % Total energy (kinetic + gravity + contact springs) must never increase:
-% dampers and friction only dissipate (L17-19/s27 power argument).
+% dampers and friction only dissipate (power argument).
 res = rbsim.dice.simulate(rbsim.dice.defaults());
 dE = diff(res.diag.energy);
 verifyLessThan(tc, max(dE), 1e-12 * res.diag.energy(1));

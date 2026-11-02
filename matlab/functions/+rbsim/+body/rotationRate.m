@@ -4,13 +4,13 @@ function Rdot = rotationRate(R, omegaB)
 %   Rdot = rotationRate(R, omegaB)
 %
 %   Inputs
-%     R      : 3x3 ^A_B[R].
-%     omegaB : 3x1 body-fixed angular velocity ^A w_B^b, components in {B}, rad/s.
+%     R: 3x3 ^A_B[R].
+%     omegaB: 3x1 body-fixed angular velocity ^A w_B^b, components in {B}, rad/s.
 %   Output
-%     Rdot   : 3x3, Rdot = R * [omegaB x]  ( = [omegaS x] * R ).
+%     Rdot: 3x3, Rdot = R * [omegaB x]  (= [omegaS x] * R).
 %
-%   Source: [LECTURE] definition [Omega]_L = R' Rdot (L7-9/s9) rearranged; the
-%   equivalent space-fixed form Rdot = [Omega]_R R appears on L7-9/s22.
+%   Source: definition [Omega]_L = R' Rdot  rearranged; the
+%   equivalent space-fixed form Rdot = [Omega]_R R appears on.
 arguments
     R (3,3) double {mustBeFinite}
     omegaB (3,1) double {mustBeFinite}

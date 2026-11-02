@@ -23,7 +23,7 @@ verifyEqual(tc, fk.tool, [p.l(1) + p.l(3); p.l(2); 0], 'AbsTol', 1e-15);
 end
 
 function testForwardKinematicsClosedForm(tc)
-% x = l1 c1 + l2 c12 + l3 c123 (planar closed form, cf. L7-9/s53);
+% x = l1 c1 + l2 c12 + l3 c123 (planar closed form, cf.);
 % ^0_3[R] = R(Z, theta1+theta2+theta3).
 p = tc.TestData.p;
 for k = 1:size(tc.TestData.Q, 2)
@@ -37,7 +37,7 @@ end
 end
 
 function testToolVelocityAccelerationPropagation(tc)
-% Propagation (L7-9/s44-47) vs finite differences of forward kinematics.
+% Propagation  vs finite differences of forward kinematics.
 p = tc.TestData.p; h = 1e-5;
 for k = 1:4
     q = tc.TestData.Q(:, k); qd = tc.TestData.QD(:, k); qdd = tc.TestData.QDD(:, k);
@@ -58,8 +58,8 @@ fk = rbsim.robot.forwardKinematics(q, p); x = fk.tool;
 end
 
 % ---------- dynamics ----------
-function testReducesToLecture2R(tc)
-% Link 3 massless -> tau1, tau2 must equal L20-21/s19 exactly; tau3 = 0.
+function testReducesToThePlanar2REquations(tc)
+% Link 3 massless -> tau1, tau2 must equal  exactly; tau3 = 0.
 p = tc.TestData.p; p.m(3) = 0; p.Izz(3) = 0;
 m1 = p.m(1); m2 = p.m(2); l1 = p.l(1); r1 = p.r(1); r2 = p.r(2);
 I1 = p.Izz(1); I2 = p.Izz(2); g = p.g;
@@ -70,15 +70,15 @@ for k = 1:size(tc.TestData.Q, 2)
          I2 + m2*r2^2 + m2*l1*r2*c2,                            I2 + m2*r2^2];
     C = [-m2*l1*r2*s2*(2*qd(1) + qd(2))*qd(2); m2*l1*r2*s2*qd(1)^2];
     G = [m2*g*(l1*c1 + r2*c12) + m1*g*r1*c1; m2*r2*g*c12];
-    tauLecture = M * qdd(1:2) + C + G;
+    tauRef = M * qdd(1:2) + C + G;
     tau = rbsim.robot.newtonEuler(q, qd, qdd, p);
-    verifyEqual(tc, tau(1:2), tauLecture, 'AbsTol', 1e-11);
+    verifyEqual(tc, tau(1:2), tauRef, 'AbsTol', 1e-11);
     verifyEqual(tc, tau(3), 0, 'AbsTol', 1e-13);
 end
 end
 
 function testGravityTorqueEqualsVirtualWork(tc)
-% Static torques G(q) = dV/dq (virtual work, L10-13/s12-17, L17-19/s28).
+% Static torques G(q) = dV/dq (virtual work,,).
 p = tc.TestData.p; h = 1e-6;
 for k = 1:size(tc.TestData.Q, 2)
     q = tc.TestData.Q(:, k);
@@ -155,7 +155,7 @@ function testPDRegulationReachesTarget(tc)
 p = tc.TestData.p; p.control.mode = 'pd'; p.tFinal = 4;
 res = rbsim.robot.simulate(p);
 verifyEqual(tc, res.x(1:3, end), deg2rad(p.control.qTargetDeg(:)), 'AbsTol', 1e-3);
-% Energy balance E - E0 = actuator work (tau.qd = dE/dt, L17-19/s27). Residual is
+% Energy balance E - E0 = actuator work (tau.qd = dE/dt,). Residual is
 % RK4 error: it must be small and fall ~16x when dt halves (4th order).
 e1 = res.summary.maxEnergyBalanceError;
 verifyLessThan(tc, e1, 1e-3);
@@ -172,7 +172,7 @@ verifyEqual(tc, res.x(1:3, end), deg2rad(p.control.qTargetDeg(:)), 'AbsTol', 1e-
 end
 
 function testStaticHoldWithGravityTorque(tc)
-% Applying tau = G(q0) holds the arm still (equilibrium, L10-13/s22).
+% Applying tau = G(q0) holds the arm still (equilibrium,).
 p = tc.TestData.p; q0 = deg2rad(p.q0(:));
 p.control.mode = 'constant';
 p.control.tau = rbsim.robot.newtonEuler(q0, zeros(3,1), zeros(3,1), p).';

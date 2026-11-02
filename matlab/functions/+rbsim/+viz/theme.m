@@ -2,7 +2,7 @@ function th = theme()
 %THEME Shared colours for scenes and dashboards (RGB triplets in [0,1]).
 %
 %   Categorical order is the validated reference palette of the data-viz method
-%   (slot 1 blue, 2 orange, 3 aqua, ... never cycled). Frame axes use the red,
+%   (slot 1 blue, 2 orange, 3 aqua,... never cycled). Frame axes use the red,
 %   green and blue slots for X, Y, Z. Text/axes use neutral inks.
 hex = @(h) sscanf(h(2:end), '%2x%2x%2x', [1 3]) / 255;
 th.series = [hex('#2a78d6'); hex('#eb6834'); hex('#1baf7a'); hex('#eda100'); ...

@@ -1,11 +1,11 @@
 function [v0, a0, vT, aT] = toolKinematics(q, qd, qdd, p)
-%TOOLKINEMATICS Tool-point velocity and acceleration by lecture propagation.
+%TOOLKINEMATICS  Tool-point velocity and acceleration by frame propagation.
 %
 %   [v0, a0, vT, aT] = rbsim.robot.toolKinematics(q, qd, qdd, p)
 %
 %   Outputs: v0, a0 in {0}; vT, aT in {Tool} (3x1, m/s and m/s^2).
-%   Uses the R-joint propagation of L7-9/s44-47 (L20-21/s8-9) from {0} to {Tool}
-%   with a fixed base (0 w_0 = 0, 0 V_0 = 0, 0 a_0 = 0; L7-9/s49). Gravity is
+%   Propagates the rotary-joint velocity and acceleration relations from {0}
+%   to {Tool} with a fixed base (w_0 = 0, V_0 = 0, a_0 = 0). Gravity is
 %   NOT included (pure kinematics).
 Z = [0; 0; 1];
 w = zeros(3,1); wd = zeros(3,1); V = zeros(3,1); Vd = zeros(3,1);

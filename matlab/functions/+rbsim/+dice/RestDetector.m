@@ -4,7 +4,7 @@ classdef RestDetector < handle
     %   det = RestDetector(p, G, holdTime)
     %   stop = det.check(t, x)
     %
-    %   Rest criterion (EXTENSION): resting on a face (top-face alignment > 0.999),
+    %   Rest criterion (engineering choice): resting on a face (top-face alignment > 0.999),
     %   at least 3 vertices in contact, |V_C| < 5e-3 m/s and |w| < 0.2 rad/s,
     %   held continuously for holdTime seconds. Identical thresholds are used by
     %   rbsim.dice.simulate's summary.settled so the two never disagree.

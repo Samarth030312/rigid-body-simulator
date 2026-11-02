@@ -4,14 +4,14 @@ function S = skew(w)
 %   S = skew(w)
 %
 %   Input
-%     w : 3x1 (or 1x3) vector, any units, components in some frame {F}.
+%     w: 3x1 (or 1x3) vector, any units, components in some frame {F}.
 %   Output
-%     S : 3x3 skew-symmetric matrix in the same frame {F}:
+%     S: 3x3 skew-symmetric matrix in the same frame {F}:
 %           S = [ 0   -wz   wy
 %                 wz   0   -wx
 %                -wy   wx   0 ]
 %
-%   Source: [LECTURE] L7-9/s6 (layout of the angular velocity matrix).
+%   Source:  (layout of the angular velocity matrix).
 %   See also UNSKEW.
 arguments
     w (3,1) double {mustBeFinite}

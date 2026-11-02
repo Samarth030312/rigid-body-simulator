@@ -1,7 +1,7 @@
 function make_figures(outDir)
 %MAKE_FIGURES Render reference figures of all three applications (headless-safe).
 %
-%   make_figures()             writes PNGs to docs/figures/
+%   make_figures             writes PNGs to docs/figures/
 %   make_figures(outDir)
 %
 %   Each figure = final-state scene + dashboard, generated only from simulation

@@ -4,16 +4,16 @@ function [k, phi] = rotToAxisAngle(R)
 %   [k, phi] = rotToAxisAngle(R)
 %
 %   Input
-%     R   : 3x3 rotation matrix.
+%     R: 3x3 rotation matrix.
 %   Outputs
-%     k   : 3x1 unit axis (eigenvector of R for eigenvalue +1).
-%     phi : angle in [0, pi], rad.
+%     k: 3x1 unit axis (eigenvector of R for eigenvalue +1).
+%     phi: angle in [0, pi], rad.
 %
-%   Regular case (phi not 0 or pi), [LECTURE] L2-4/s14-15:
+%   Regular case (phi not 0 or pi),:
 %     phi = acos((r11+r22+r33-1)/2),  k = [r32-r23; r13-r31; r21-r12]/(2 sin phi)
-%   Special cases, [EXTENSION] (L2-4/s15 flags them as special without formulas):
-%     phi ~ 0  : axis undefined; k = [0;0;1] is returned by convention.
-%     phi ~ pi : k from the largest diagonal of (R + I)/2 = k k'.
+%   Special cases, engineering choice (flags them as special without formulas):
+%     phi ~ 0: axis undefined; k = [0;0;1] is returned by convention.
+%     phi ~ pi: k from the largest diagonal of (R + I)/2 = k k'.
 arguments
     R (3,3) double {mustBeFinite}
 end

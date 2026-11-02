@@ -4,15 +4,15 @@ function R = rotBodyFixed(seq, angles)
 %   R = rotBodyFixed(seq, angles)
 %
 %   Inputs
-%     seq    : char/string of axis letters, e.g. 'XYZ' (X-Y-Z Euler angles) or
+%     seq: char/string of axis letters, e.g. 'XYZ' (X-Y-Z Euler angles) or
 %              'ZYZ' (classical Euler angles). Letters from {X,Y,Z}; consecutive
 %              letters must differ.
-%     angles : vector of the same length as seq, rad. angles(1) is applied first.
+%     angles: vector of the same length as seq, rad. angles(1) is applied first.
 %   Output
-%     R      : 3x3 ^A_B[R]. Body-fixed rotations POST-multiply:
-%                R = R(seq(1),angles(1)) * R(seq(2),angles(2)) * ...
+%     R: 3x3 ^A_B[R]. Body-fixed rotations POST-multiply:
+%                R = R(seq(1),angles(1)) * R(seq(2),angles(2)) *...
 %
-%   Source: [LECTURE] L2-4/s21 (order of multiplication), s24-25 (X-Y-Z), s30 (Z-Y-Z).
+%   Source:  (order of multiplication), s24-25 (X-Y-Z), s30 (Z-Y-Z).
 %   See also ROTSPACEFIXED.
 arguments
     seq {mustBeTextScalar}

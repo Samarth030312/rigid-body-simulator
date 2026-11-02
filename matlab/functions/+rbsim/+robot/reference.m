@@ -5,7 +5,7 @@ function [q, qd, qdd] = reference(t, qStart, qEnd, T)
 %
 %   s(tau) = 10 tau^3 - 15 tau^4 + 6 tau^5, tau = t/T clipped to [0,1]; zero
 %   velocity and acceleration at both ends. Units follow qStart/qEnd (rad).
-%   Source: [EXTENSION] (motion planning is not covered by the lectures).
+%   A quintic holds velocity and acceleration at zero at both ends of the move.
 tau = min(max(t / T, 0), 1);
 s = 10*tau^3 - 15*tau^4 + 6*tau^5;
 sd = (30*tau^2 - 60*tau^3 + 30*tau^4) / T;

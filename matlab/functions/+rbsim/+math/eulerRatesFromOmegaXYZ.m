@@ -3,19 +3,19 @@ function thetaDot = eulerRatesFromOmegaXYZ(theta, omegaS)
 %
 %   thetaDot = eulerRatesFromOmegaXYZ(theta, omegaS)
 %
-%   Inverts the lecture relation omegaS = E(theta) * thetaDot (L7-9/s7, s14),
-%   i.e. the "coupled non-linear differential equations" of L7-9/s14 that are
-%   integrated in the numerical example of L7-9/s16.
+%   Inverts the relation omegaS = E(theta) * thetaDot,
+%   i.e. the "coupled non-linear differential equations" of  that are
+%   integrated in the numerical example of.
 %
 %   Inputs
-%     theta  : 3x1 X-Y-Z Euler angles, rad.
-%     omegaS : 3x1 space-fixed angular velocity in {A}, rad/s.
+%     theta: 3x1 X-Y-Z Euler angles, rad.
+%     omegaS: 3x1 space-fixed angular velocity in {A}, rad/s.
 %   Output
-%     thetaDot : 3x1, rad/s.
+%     thetaDot: 3x1, rad/s.
 %
 %   Singular when cos(t2) = 0 (t2 = +-pi/2), the Euler-angle singularity of
-%   L2-4/s27; an error is raised there. The closed-form inverse is an
-%   [EXTENSION] derived from the lecture matrix E:
+%; an error is raised there. The closed-form inverse is an
+%   engineering choice derived from the matrix E:
 %     t3dot = (-s1*wy + c1*wz)/c2
 %     t2dot =   c1*wy + s1*wz
 %     t1dot =   wx - s2*t3dot

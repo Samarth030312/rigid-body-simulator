@@ -40,7 +40,7 @@ verifyEqual(tc, R, eye(3), 'AbsTol', 1e-15);
 end
 
 function testGravityProjectileAnalytic(tc)
-% Newton (L17-19/s6) with mg (L10-13/s8): r = r0 + v0 t + g t^2/2 (RK4 exact).
+% Newton  with mg: r = r0 + v0 t + g t^2/2 (RK4 exact).
 g = tc.TestData.g; m = 0.006;
 r0 = [0; 0; 1]; v0 = [1; 0.5; 3];
 x0 = rbsim.body.pack(r0, v0, eye(3), [5; -3; 8]);
@@ -65,7 +65,7 @@ verifyEqual(tc, R, Rexact, 'AbsTol', 2e-8);
 end
 
 function testSymmetricTopTorqueFreeAnalytic(tc)
-% L16/s7-8: Ixx = Iyy, wz constant, Omega = (Izz-Ixx)/Ixx wz,
+%: Ixx = Iyy, wz constant, Omega = (Izz-Ixx)/Ixx wz,
 % wx = a0 sin(Omega t + phi), wy = -a0 cos(Omega t + phi).
 I = diag([2, 2, 3.5]) * 1e-3;
 w0 = [0.6; -0.8; 5];
@@ -82,7 +82,7 @@ verifyEqual(tc, sol.x(18, :), w0(3) * ones(size(t)), 'AbsTol', 1e-12);
 end
 
 function testAsymmetricTorqueFreeConservation(tc)
-% Torque-free: kinetic energy and ^A H_C constant (L16/s5-6, L17-19/s27).
+% Torque-free: kinetic energy and ^A H_C constant.
 I = diag([1, 2, 3]) * 1e-3;
 x0 = rbsim.body.pack([0;0;0], [0;0;0], rbsim.math.rotBodyFixed('ZYZ', [0.3 1 -0.5]), [1; 6; 0.5]);
 sol = simulate(x0, 1, I, @noLoads, 10, 1e-3);
@@ -98,7 +98,7 @@ verifyLessThan(tc, sol.solver.maxCorrection, 1e-10);
 end
 
 function testEulerEquationEqualsRateOfAngularMomentum(tc)
-% Newton-Euler consistency: d/dt(^A H_C) = ^A M = R ^B M  (L16/s6).
+% Newton-Euler consistency: d/dt(^A H_C) = ^A M = R ^B M.
 I = [3 0.2 -0.1; 0.2 2 0.3; -0.1 0.3 4] * 1e-3;   % non-diagonal, SPD
 MB = @(t) [0.01*sin(t); -0.02; 0.005*t];
 loads = @(t, x) deal(zeros(3,1), MB(t));
@@ -133,9 +133,9 @@ verifyLessThan(tc, max(abs(E - E(1))) / abs(E(1)), 1e-9);
 end
 
 % ---------- Level 4: integration ----------
-function testLectureEulerAngleIntegrationExample(tc)
-% L7-9/s16: X-Y-Z Euler angles driven by constant w^s = [1 2 3] rad/s from 0.
-% (a) Integrate the lecture Euler-angle ODE; (b) the exact rotation for constant
+function testEulerAngleIntegrationMatchesExactRotation(tc)
+%: X-Y-Z Euler angles driven by constant w^s = [1 2 3] rad/s from 0.
+% (a) Integrate the Euler-angle ODE; (b) the exact rotation for constant
 % w^s is R(t) = R(w^s/|w^s|, |w^s| t). Both must describe the same orientation.
 ws = [1; 2; 3];
 sol = rbsim.solver.rk4(@(t, th) rbsim.math.eulerRatesFromOmegaXYZ(th, ws), [0 5], zeros(3,1), 1e-4, ...
@@ -145,9 +145,8 @@ for k = 1:10:numel(sol.t)
     Rex = rbsim.math.rotAxisAngle(ws, norm(ws) * sol.t(k));
     verifyEqual(tc, Rth, Rex, 'AbsTol', 1e-8);
 end
-% NOTE: the curves plotted on L7-9/s16 cannot be reproduced from the equations
-% stated on that slide (SD-14); the exact-rotation comparison above is the
-% authoritative check. Regression values of this implementation at t = 5 s:
+% The comparison with the exact rotation above is the authoritative check.
+% Regression values of this implementation at t = 5 s:
 verifyEqual(tc, sol.x(:, end), [-0.0420; -0.0732; 18.7347], 'AbsTol', 1e-3);
 end
 

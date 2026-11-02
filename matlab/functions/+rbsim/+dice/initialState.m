@@ -4,9 +4,9 @@ function x0 = initialState(p)
 %   x0 = rbsim.dice.initialState(p)
 %
 %   Orientation: body-fixed (post-multiplied) or space-fixed (pre-multiplied)
-%   rotations of the given sequence (L2-4/s21-36), angles in degrees.
+%   rotations of the given sequence, angles in degrees.
 %   Angular velocity: if given in 'space' components (^A w^s) it is converted to
-%   the body-fixed state variable with ^A w^b = R' ^A w^s (L7-9/s10).
+%   the body-fixed state variable with ^A w^b = R' ^A w^s.
 p = rbsim.dice.validate(p);
 o = p.orientation;
 ang = deg2rad(o.anglesDeg(:).');

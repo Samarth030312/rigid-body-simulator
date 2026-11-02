@@ -5,26 +5,26 @@ function sol = rk4(f, tspan, x0, dt, opts)
 %   sol = rbsim.solver.rk4(f, tspan, x0, dt, Name=Value)
 %
 %   Inputs
-%     f      : function handle xdot = f(t, x), x an n x 1 column.
-%     tspan  : [t0 tf], s (tf > t0).
-%     x0     : n x 1 initial state.
-%     dt     : step size, s. The last step is shortened to land exactly on tf.
+%     f: function handle xdot = f(t, x), x an n x 1 column.
+%     tspan: [t0 tf], s (tf > t0).
+%     x0: n x 1 initial state.
+%     dt: step size, s. The last step is shortened to land exactly on tf.
 %   Options
-%     PostStep    : handle [x, corr] = PostStep(x) applied after every step, e.g.
+%     PostStep: handle [x, corr] = PostStep(x) applied after every step, e.g.
 %                   rotation-matrix re-orthonormalisation. corr = size of the
 %                   correction (logged). Default: none.
-%     OutputEvery : store every k-th step (default 1). First and last are always kept.
-%     StopFcn     : handle tf = StopFcn(t, x); integration stops after the first
+%     OutputEvery: store every k-th step (default 1). First and last are always kept.
+%     StopFcn: handle tf = StopFcn(t, x); integration stops after the first
 %                   step where it returns true (e.g. dice at rest). Default: none.
 %   Output (struct)
-%     t          : 1 x N stored times, s
-%     x          : n x N stored states
-%     solver     : struct(name, dt, steps, wallTime, maxCorrection, stoppedEarly)
+%     t: 1 x N stored times, s
+%     x: n x N stored states
+%     solver: struct(name, dt, steps, wallTime, maxCorrection, stoppedEarly)
 %
 %   Method: k1 = f(t,x), k2 = f(t+h/2, x+h k1/2), k3 = f(t+h/2, x+h k2/2),
 %   k4 = f(t+h, x+h k3), x+ = x + h(k1 + 2k2 + 2k3 + k4)/6.
-%   Source: [EXTENSION] (ADR-0009); lectures only prescribe numerical integration
-%   in MATLAB (L7-9/s14).
+%   The classical four-stage Runge-Kutta rule, chosen in ADR-0009 for a fixed,
+%   reproducible step and a uniform output grid for animation.
 arguments
     f (1,1) function_handle
     tspan (1,2) double {mustBeFinite}

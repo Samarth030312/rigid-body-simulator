@@ -4,14 +4,14 @@ function w = unskew(S)
 %   w = unskew(S)
 %
 %   Input
-%     S : 3x3 matrix. Only its rbsim.math.skew-symmetric part (S - S')/2 is used, so small
+%     S: 3x3 matrix. Only its rbsim.math.skew-symmetric part (S - S')/2 is used, so small
 %         numerical symmetric errors (e.g. from Rdot*R' computed numerically) are
 %         rejected rather than propagated.
 %   Output
-%     w : 3x1 vector such that rbsim.math.skew(w) = (S - S')/2.
+%     w: 3x1 vector such that rbsim.math.skew(w) = (S - S')/2.
 %
-%   Source: inverse of the layout in [LECTURE] L7-9/s6. Symmetric-part rejection
-%   is an [EXTENSION].
+%   Source: inverse of the layout in. Symmetric-part rejection
+%   is an engineering choice.
 %   See also SKEW.
 arguments
     S (3,3) double {mustBeFinite}

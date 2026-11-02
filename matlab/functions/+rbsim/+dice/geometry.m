@@ -3,17 +3,17 @@ function G = geometry(a)
 %
 %   G = rbsim.dice.geometry(a)
 %
-%   Input : a  edge length, m. {B} origin at the centre of mass (CONVENTIONS 1).
+%   Input: a  edge length, m. {B} origin at the centre of mass (CONVENTIONS 1).
 %   Output struct:
-%     .vertices   3x8 vertex coordinates in {B}, m (+-a/2 per axis)
-%     .faces      6x4 vertex indices per face, counter-clockwise seen from outside
-%     .normals    3x6 outward unit normals in {B}
-%     .values     1x6 face value shown on each face
-%     .pips       1x6 cell, each 3xN pip centres in {B} (N = face value), m
-%     .pipRadius  pip radius, m
+%.vertices   3x8 vertex coordinates in {B}, m (+-a/2 per axis)
+%.faces      6x4 vertex indices per face, counter-clockwise seen from outside
+%.normals    3x6 outward unit normals in {B}
+%.values     1x6 face value shown on each face
+%.pips       1x6 cell, each 3xN pip centres in {B} (N = face value), m
+%.pipRadius  pip radius, m
 %
-%   Face layout [LECTURE] L2-4/s13, s44: +X 4, -X 3, +Y 2, -Y 5, +Z 1, -Z 6.
-%   Pip patterns (standard die) are an [EXTENSION] for display.
+%   Face layout: +X 4, -X 3, +Y 2, -Y 5, +Z 1, -Z 6.
+%   Pip patterns (standard die) are an engineering choice for display.
 arguments
     a (1,1) double {mustBePositive}
 end

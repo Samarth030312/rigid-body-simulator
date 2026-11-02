@@ -4,13 +4,13 @@ function [omegaS, omegaB] = eulerRatesZYZ(theta, thetaDot)
 %   [omegaS, omegaB] = eulerRatesZYZ(theta, thetaDot)
 %
 %   Inputs
-%     theta    : 3x1 Z-Y-Z Euler angles, rad.
-%     thetaDot : 3x1 rates, rad/s.
+%     theta: 3x1 Z-Y-Z Euler angles, rad.
+%     thetaDot: 3x1 rates, rad/s.
 %   Outputs
-%     omegaS : 3x1 space-fixed angular velocity, components in {A}, rad/s.
-%     omegaB : 3x1 body-fixed angular velocity, components in {B}, rad/s.
+%     omegaS: 3x1 space-fixed angular velocity, components in {A}, rad/s.
+%     omegaB: 3x1 body-fixed angular velocity, components in {B}, rad/s.
 %
-%   Source: [LECTURE] L7-9/s8 and s10 (both component sets written explicitly).
+%   Source:  and s10 (both component sets written explicitly).
 arguments
     theta (3,1) double {mustBeFinite}
     thetaDot (3,1) double {mustBeFinite}

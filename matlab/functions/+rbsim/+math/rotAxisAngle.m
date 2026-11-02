@@ -4,13 +4,13 @@ function R = rotAxisAngle(k, phi)
 %   R = rotAxisAngle(k, phi)
 %
 %   Inputs
-%     k   : 3x1 rotation axis (components in {A}). Normalised internally; must be
+%     k: 3x1 rotation axis (components in {A}). Normalised internally; must be
 %           non-zero.
-%     phi : rotation angle, rad (right-hand rule about k).
+%     phi: rotation angle, rad (right-hand rule about k).
 %   Output
-%     R   : 3x3 rotation matrix. R*Q equals Rodrigues' rotation of Q about k by phi.
+%     R: 3x3 rotation matrix. R*Q equals Rodrigues' rotation of Q about k by phi.
 %
-%   Source: [LECTURE] L2-4/s16-18 (element formulas r11..r33 on s18).
+%   Rodrigues' rotation formula.  (element formulas r11..r33 on s18).
 %   See also ROTTOAXISANGLE.
 arguments
     k (3,1) double {mustBeFinite}

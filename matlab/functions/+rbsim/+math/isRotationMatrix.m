@@ -4,7 +4,7 @@ function tf = isRotationMatrix(R, tol)
 %   tf = isRotationMatrix(R)       % tol = 1e-9
 %   tf = isRotationMatrix(R, tol)
 %
-%   Checks ||R'R - I||_F <= tol and |det R - 1| <= tol ([LECTURE] L2-4/s9).
+%   Checks ||R'R - I||_F <= tol and |det R - 1| <= tol.
 arguments
     R double
     tol (1,1) double {mustBePositive} = 1e-9

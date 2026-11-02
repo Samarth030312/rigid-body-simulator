@@ -3,20 +3,20 @@ function [F_A, M_A, info] = contactLoads(x, p, G)
 %
 %   [F_A, M_A, info] = rbsim.dice.contactLoads(x, p, G)
 %
-%   Inputs : x 18x1 rigid-body state; p dice params; G = rbsim.dice.geometry(p.edge).
+%   Inputs: x 18x1 rigid-body state; p dice params; G = rbsim.dice.geometry(p.edge).
 %   Outputs: F_A 3x1 resultant contact force in {A}, N
 %            M_A 3x1 resultant contact moment about the COM C in {A}, N*m
-%            info struct: .n (number of vertices in contact), .springEnergy (J),
-%                 .normalForce (1x8, N)
+%            info struct:.n (number of vertices in contact),.springEnergy (J),
+%.normalForce (1x8, N)
 %
-%   Model, built only from lecture force elements (L10-13/s6-7, L17-19/s10):
-%     vertex i:  ^A p_i = ^A r_C + R ^B v_i                 (L7-9/s20)
-%                ^A V_i = ^A V_C + w^s x (R ^B v_i)          (L7-9/s23, SD-02)
+%   Model, built from elementary force elements:
+%     vertex i:  ^A p_i = ^A r_C + R ^B v_i
+%                ^A V_i = ^A V_C + w^s x (R ^B v_i)
 %     penetration  delta_i = floorZ - p_iz  (> 0 in contact)
 %     normal       N_i = max(0, k delta_i - c V_iz)   spring + damper, no pull
 %     friction     F_t = -mu N_i u_t / sqrt(|u_t|^2 + v_eps^2)   Coulomb |F| = mu N
 %                  opposite to sliding velocity u_t (smoothly regularised)
-%     moment       M_A = sum (R ^B v_i) x f_i                  (L10-13/s4)
+%     moment       M_A = sum (R ^B v_i) x f_i
 F_A = zeros(3, 1); M_A = zeros(3, 1);
 wantInfo = nargout > 2;                % diagnostics only when requested
 if wantInfo
@@ -35,7 +35,7 @@ if isempty(idx)
     return
 end
 wb = x(16:18);
-ws = R * wb;                           % ^A w^s = R ^A w^b  (L7-9/s10)
+ws = R * wb;                           % ^A w^s = R ^A w^b  ()
 rc = rv(:, idx);
 Vc = x(4:6) + [ws(2)*rc(3,:) - ws(3)*rc(2,:);      % V_C + w^s x r  (vectorised)
                ws(3)*rc(1,:) - ws(1)*rc(3,:);

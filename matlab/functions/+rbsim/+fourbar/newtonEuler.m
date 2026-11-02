@@ -3,12 +3,12 @@ function [sol, kin] = newtonEuler(theta1, thetaDot1, p, known)
 %
 %   [sol, kin] = rbsim.fourbar.newtonEuler(theta1, thetaDot1, p, known)
 %
-%   known.type = 'torque' : known.value = crank drive torque tau -> solve thetaDDot1
-%   known.type = 'accel'  : known.value = thetaDDot1 -> solve required tau
+%   known.type = 'torque': known.value = crank drive torque tau -> solve thetaDDot1
+%   known.type = 'accel': known.value = thetaDDot1 -> solve required tau
 %   Load torque p.drive.loadTorque acts on link 3; crank bearing damping
 %   -b thetaDot1 acts on link 1 (both optional).
 %
-%   Free-body diagrams (EXTENSION, ADR-0011; laws from L17-19/s6, s8, s9-13):
+%   Free-body diagrams (EXTENSION, ADR-0011; laws from):
 %     link 1:  F_OL - F_A + m1 g = m1 a_C1
 %              tau - b th1dot + (O_L - C1) x F_OL + (A - C1) x (-F_A) = I1 alpha1
 %     link 2:  F_A - F_B + m2 g = m2 a_C2
@@ -22,7 +22,7 @@ function [sol, kin] = newtonEuler(theta1, thetaDot1, p, known)
 %   giving 9 linear equations in 9 unknowns [F_OL; F_A; F_B; F_OR; X], X = the
 %   unknown thetaDDot1 or tau.
 %
-%   Output sol: .thetaDDot1, .tau, .F_OL, .F_A, .F_B, .F_OR (2x1, N)
+%   Output sol:.thetaDDot1,.tau,.F_OL,.F_A,.F_B,.F_OR (2x1, N)
 kin = rbsim.fourbar.kinematics(theta1, thetaDot1, 0, p);
 if kin.toggle
     error('rbsim:fourbar:singular', ['Toggle (singular) configuration at theta1 = ' ...

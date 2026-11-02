@@ -5,7 +5,7 @@ function [x, corr] = projectState(x)
 %
 %   Intended as the INTEGRATERK4 PostStep for rigid bodies. corr is the Frobenius
 %   norm of the change in R (a direct measure of integration drift off SO(3)).
-%   Source: [EXTENSION] (ADR-0008).
+%   Source: engineering choice (ADR-0008).
 arguments
     x (18,1) double
 end

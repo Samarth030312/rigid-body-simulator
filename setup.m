@@ -24,9 +24,9 @@ function out = setup(varargin)
     if any(a == "save"), savepath; fprintf('  Path saved for future sessions.\n'); end
     res = []; h = [];
     if any(a == "test"), res = runTests(here); end
-    if any(a == "figures"), rigid_body_figures(); end
+    if any(a == "figures"), rigid_body_figures; end
     if any(a == "open")
-        h = rigid_body_lab();
+        h = rigid_body_lab;
     elseif ~any(a == "test")
         fprintf('  Open the app:  setup open    ·  run the tests:  setup test\n\n');
     end
@@ -34,11 +34,11 @@ function out = setup(varargin)
 end
 
 function results = runTests(here)
-    suite = matlab.unittest.TestSuite.fromFolder(fullfile(here, 'matlab', 'tests'), ...
+    suite = matlab.unittest.TestSuite.fromFolder(fullfile(here, 'matlab', 'tests'),...
         'IncludingSubfolders', true);
     results = run(matlab.unittest.TestRunner.withTextOutput('Verbosity', 1), suite);
     t = table(results);
-    fprintf('\n  %d tests: %d passed, %d failed, %d incomplete, %.1f s\n\n', numel(results), ...
+    fprintf('\n  %d tests: %d passed, %d failed, %d incomplete, %.1f s\n\n', numel(results),...
         nnz([results.Passed]), nnz([results.Failed]), nnz([results.Incomplete]), sum(t.Duration));
     if any(~[results.Passed])
         disp(t(~[results.Passed], {'Name', 'Passed', 'Failed', 'Incomplete'}));

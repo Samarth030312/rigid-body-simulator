@@ -4,13 +4,13 @@ function [orthErr, detErr] = rotationError(R)
 %   [orthErr, detErr] = rotationError(R)
 %
 %   Input
-%     R       : 3x3 matrix.
+%     R: 3x3 matrix.
 %   Outputs
-%     orthErr : Frobenius norm of (R'*R - I). Zero for an orthonormal matrix.
-%     detErr  : |det(R) - 1|. Zero for a proper rotation.
+%     orthErr: Frobenius norm of (R'*R - I). Zero for an orthonormal matrix.
+%     detErr: |det(R) - 1|. Zero for a proper rotation.
 %
-%   Source: properties det = +1 and R'R = [U], [LECTURE] L2-4/s9. Metric choice
-%   (Frobenius norm) is an [EXTENSION].
+%   Source: properties det = +1 and R'R = [U],. Metric choice
+%   (Frobenius norm) is an engineering choice.
 arguments
     R (3,3) double
 end

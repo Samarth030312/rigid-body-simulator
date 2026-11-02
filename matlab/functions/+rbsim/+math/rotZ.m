@@ -4,11 +4,10 @@ function R = rotZ(phi)
 %   R = rotZ(phi)
 %
 %   Input
-%     phi : rotation angle, rad. Positive = right-hand rule about +Z.
+%     phi: rotation angle, rad. Positive = right-hand rule about +Z.
 %   Output
-%     R   : 3x3 rotation matrix; maps ^B r -> ^A r.
+%     R: 3x3 rotation matrix; maps ^B r -> ^A r.
 %
-%   Source: [LECTURE] L2-4/s20.
 arguments
     phi (1,1) double {mustBeFinite}
 end

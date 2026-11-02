@@ -1,7 +1,7 @@
 classdef RigidBodyLabApp < handle
-    %RIGIDBODYSIMULATORAPP Interactive GUI for the ENR209 rigid-body simulator.
+    %RIGIDBODYLABAPP  The rigid-body lab: parameter forms, scenes, dashboards and checks.
     %
-    %   app = RigidBodyLabApp()           % visible window
+    %   app = RigidBodyLabApp           % visible window
     %   app = RigidBodyLabApp('Visible', false)   % headless (tests)
     %
     %   Presentation/control layer only (ADR-0002, ADR-0014). Callbacks collect
@@ -13,7 +13,7 @@ classdef RigidBodyLabApp < handle
     %     run(kind)            kind = 'dice' | 'robot' | 'fourbar'
     %     showSample(kind, k)  display sample k of the last result
     %     setField(kind, key, value) / getParams(kind) / resetForm(kind)
-    %     play(kind) / pause() / delete()
+    %     play(kind) / pause / delete
 
     properties (SetAccess = private)
         UIFigure
@@ -47,7 +47,7 @@ classdef RigidBodyLabApp < handle
                 opts.Visible (1,1) logical = true
             end
             run(fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))), 'setup_path.m'));
-            app.UIFigure = uifigure('Name', 'ENR209 Rigid Body Simulator', ...
+            app.UIFigure = uifigure('Name', 'Rigid-Body Lab', ...
                 'Position', [60 60 1440 860], 'Visible', 'off', ...
                 'Color', rbsim.viz.theme().surface, 'CloseRequestFcn', @(~,~) app.delete());
             % The categorical palette is validated for a light surface; pin the
@@ -55,7 +55,7 @@ classdef RigidBodyLabApp < handle
             try
                 theme(app.UIFigure, 'light');
             catch
-                % theme() unavailable in older releases: default is light there
+                % theme unavailable in older releases: default is light there
             end
             g = uigridlayout(app.UIFigure, [1 1], 'Padding', 0);
             app.TabGroup = uitabgroup(g);
@@ -394,15 +394,15 @@ d = rbsim.dice.defaults();
 seqs = {'XYZ', 'XZY', 'YXZ', 'YZX', 'ZXY', 'ZYX', 'XYX', 'XZX', 'YXY', 'YZY', 'ZXZ', 'ZYZ'};
 spec = {
  'edge',    'Edge a (mm)',          d.edge * 1e3, 'num', 'Cube edge length', {}
- 'mass',    'Mass m (g)',           d.mass * 1e3, 'num', 'Mass; inertia = m a^2/6 [U] (L14-15/s9)', {}
+ 'mass',    'Mass m (g)',           d.mass * 1e3, 'num', 'Mass; inertia = m a^2/6 [U] ()', {}
  'r0',      'Position r_C (m)',     d.r0.', 'num', 'Initial COM position in {A} (x, y, z)', {}
- 'orientType', 'Rotation type',     'Body-fixed', 'drop', 'Body-fixed = post-multiply, space-fixed = pre-multiply (L2-4/s21-36)', {'Body-fixed', 'Space-fixed'}
+ 'orientType', 'Rotation type',     'Body-fixed', 'drop', 'Body-fixed = post-multiply, space-fixed = pre-multiply ()', {'Body-fixed', 'Space-fixed'}
  'sequence','Sequence',             d.orientation.sequence, 'drop', 'Order of the three simple rotations', seqs
  'angles',  'Angles (deg)',         d.orientation.anglesDeg, 'num', 'Rotation angles, first rotation first', {}
  'v0',      'Velocity V_C (m/s)',   d.v0.', 'num', 'Initial COM velocity in {A}', {}
  'omega0',  'Ang. vel. (rad/s)',    d.omega0.', 'num', 'Initial angular velocity components', {}
  'omegaFrame', 'omega components',  'Body {B}', 'drop', 'Body-fixed w^b (along {B}) or space-fixed w^s (along {A})', {'Body {B}', 'Space {A}'}
- 'contact', 'Floor contact',        true, 'check', 'EXTENSION (ADR-0012): spring-damper-friction floor. Off = pure free flight (lecture model)', {}
+ 'contact', 'Floor contact',        true, 'check', 'Engineering extension (ADR-0012): spring-damper-friction floor. Off = free flight only', {}
  'stiffness','Stiffness k (N/m)',   d.contact.stiffness, 'num', 'Contact spring per vertex', {}
  'damping', 'Damping c (N s/m)',    d.contact.damping, 'num', 'Contact damper per vertex', {}
  'friction','Friction mu',          d.contact.friction, 'num', 'Coulomb friction coefficient', {}
@@ -419,7 +419,7 @@ spec = {
  'm',     'Masses m_i (kg)',       d.m, 'num', 'Link masses', {}
  'rFrac', 'COM r_i/l_i',           d.r ./ d.l, 'num', 'COM position along each link (0..1)', {}
  'width', 'Width w_i (m)',         d.width, 'num', 'For inertia I_i = m(l^2+w^2)/12', {}
- 'q0',    'Initial q (deg)',       d.q0, 'num', 'Relative joint angles (L7-9/s49)', {}
+ 'q0',    'Initial q (deg)',       d.q0, 'num', 'Relative joint angles ()', {}
  'qd0',   'Initial qdot (deg/s)',  d.qd0, 'num', 'Joint rates', {}
  'mode',  'Control mode',          'free', 'drop', 'free / constant torque / PD / computed-torque trajectory', {'free', 'constant', 'pd', 'trajectory'}
  'tau',   'Torque tau (N m)',      d.control.tau, 'num', 'Constant joint torques (constant mode)', {}
@@ -437,10 +437,10 @@ end
 function spec = fourbarForm()
 d = rbsim.fourbar.defaults();
 spec = {
- 'l',      'l0 l1 (m)',            d.l(1:2), 'num', 'Ground and crank length (L5-6/s20)', {}
+ 'l',      'l0 l1 (m)',            d.l(1:2), 'num', 'Ground and crank length ()', {}
  'l23',    'l2 l3 (m)',            d.l(3:4), 'num', 'Coupler and rocker length', {}
  'm',      'Masses m1..m3 (kg)',   d.m, 'num', 'Crank, coupler, rocker', {}
- 'branch', 'Assembly branch',      'open', 'drop', 'open = configuration of L5-6/s20', {'open', 'crossed'}
+ 'branch', 'Assembly branch',      'open', 'drop', 'open = configuration of ', {'open', 'crossed'}
  'theta0', 'Crank angle (deg)',    d.theta0Deg, 'num', 'Initial theta1', {}
  'thetaDot0','Crank rate (deg/s)', d.thetaDot0Deg, 'num', 'Initial crank rate (free/torque)', {}
  'mode',   'Drive',                'free', 'drop', 'free / constant torque / constant speed', {'free', 'torque', 'speed'}
@@ -527,23 +527,23 @@ end
 
 function txt = aboutText()
 txt = {
-'ENR209 Rigid Body Simulator - conventions (docs/architecture/CONVENTIONS.md)'
+'Rigid-body lab - conventions (docs/architecture/CONVENTIONS.md)'
 ''
 'Frames      right-handed Cartesian; {A}/{0} fixed, {B} body-fixed at the COM'
-'Rotation    ^A_B[R] = [^A X_B | ^A Y_B | ^A Z_B],  ^A r = ^A_B[R] ^B r      (L2-4/s8-9)'
-'Body-fixed  R = R(ax1,t1) R(ax2,t2) R(ax3,t3)   (post-multiply)           (L2-4/s21,s25)'
-'Space-fixed R = R(ax3,t3) R(ax2,t2) R(ax1,t1)   (pre-multiply)            (L2-4/s36)'
-'Ang. vel.   [w^s x] = Rdot R''   (space-fixed),  [w^b x] = R'' Rdot (body)  (L7-9/s5-10)'
-'Newton      m a_C = F                                                    (L17-19/s6)'
-'Euler       ^B[I]_C wdot^b + w^b x ^B[I]_C w^b = ^B M                     (L16/s6)'
-'Cube        ^B[I]_C = (m a^2 / 6) [U]                                     (L14-15/s9)'
+'Rotation    ^A_B[R] = [^A X_B | ^A Y_B | ^A Z_B],  ^A r = ^A_B[R] ^B r      ()'
+'Body-fixed  R = R(ax1,t1) R(ax2,t2) R(ax3,t3)   (post-multiply)           ()'
+'Space-fixed R = R(ax3,t3) R(ax2,t2) R(ax1,t1)   (pre-multiply)            ()'
+'Ang. vel.   [w^s x] = Rdot R''   (space-fixed),  [w^b x] = R'' Rdot (body)  ()'
+'Newton      m a_C = F                                                    ()'
+'Euler       ^B[I]_C wdot^b + w^b x ^B[I]_C w^b = ^B M                     ()'
+'Cube        ^B[I]_C = (m a^2 / 6) [U]                                     ()'
 'Gravity     9.81 m/s^2 along -Z_A (3D) and -Y_0 (planar)'
-'Dice faces  +X 4, -X 3, +Y 2, -Y 5, +Z 1, -Z 6                             (L2-4/s13)'
-'3R          planar, relative joint angles, recursive Newton-Euler           (L7-9/s49, L20-21/s10-11)'
-'Four-bar    Freudenstein constraint eta1(theta1, phi1) = 0                 (L5-6/s22)'
+'Dice faces  +X 4, -X 3, +Y 2, -Y 5, +Z 1, -Z 6                             ()'
+'3R          planar, relative joint angles, recursive Newton-Euler           (, )'
+'Four-bar    Freudenstein constraint eta1(theta1, phi1) = 0                 ()'
 'Integration fixed-step RK4 with SO(3) re-orthonormalisation                 (ADR-0009)'
 ''
-'Engineering extensions (not in the lectures): dice floor contact, four-bar dynamics'
+'Engineering extensions beyond the textbook core: floor contact, four-bar dynamics'
 'formulation, controllers, Grashof classification, outcome rule. See docs/DECISIONS.md.'
 };
 end

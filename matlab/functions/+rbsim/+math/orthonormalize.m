@@ -4,10 +4,10 @@ function Rn = orthonormalize(R)
 %   Rn = orthonormalize(R)
 %
 %   Numerical integration of Rdot = R*[omega_b] slowly violates R'R = I. This
-%   projection restores the lecture properties (L2-4/s9) after each step.
+%   projection restores the properties  after each step.
 %   Method: SVD R = U S V', Rn = U diag(1,1,det(U V')) V'.
 %
-%   Source: [EXTENSION] (standard polar/SVD projection; not in the lectures).
+%   The standard polar (SVD) projection onto SO(3).
 arguments
     R (3,3) double {mustBeFinite}
 end

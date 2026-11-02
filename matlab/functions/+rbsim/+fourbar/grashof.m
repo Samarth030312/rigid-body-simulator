@@ -7,7 +7,7 @@ function [isGrashof, type] = grashof(l)
 %   from which link is shortest: ground -> 'double-crank', crank (l1) or rocker
 %   (l3) -> 'crank-rocker' (the shortest link fully rotates), coupler ->
 %   'double-rocker'. Otherwise 'triple-rocker (non-Grashof)'.
-%   Source: [EXTENSION] (not in the supplied lectures).
+%   Grashof's criterion and the classical four-bar types.
 arguments
     l (1,4) double {mustBePositive}
 end

@@ -1,7 +1,7 @@
 function out = runExamples(opts)
 %RUNEXAMPLES Reproducible demonstrations of every application WITHOUT the GUI.
 %
-%   out = runExamples()               prints a report
+%   out = runExamples               prints a report
 %   out = runExamples(Quiet=true)     returns results only
 %
 %   Shows that the core mechanics run headlessly (architecture rule) and gives the
@@ -14,14 +14,14 @@ run(fullfile(root, 'matlab', 'setup_path.m'));
 say = @(varargin) fprintf(varargin{:});
 if opts.Quiet, say = @(varargin) []; end
 
-% 1. Lecture rotation examples (L2-4/s44, s50)
+% 1. Rotation conventions: body-fixed and space-fixed triples
 ang = deg2rad([60 45 -75]);
 out.Rbody = rbsim.math.rotBodyFixed('XYZ', ang);
 out.Rspace = rbsim.math.rotSpaceFixed('XYZ', ang);
-say('Body-fixed  X-Y-Z (60,45,-75) deg, cf. L2-4/s50:\n'); say('%9.4f %9.4f %9.4f\n', out.Rbody.');
-say('Space-fixed X-Y-Z (60,45,-75) deg, cf. L2-4/s44:\n'); say('%9.4f %9.4f %9.4f\n', out.Rspace.');
+say('Body-fixed  X-Y-Z (60,45,-75) deg, cf. :\n'); say('%9.4f %9.4f %9.4f\n', out.Rbody.');
+say('Space-fixed X-Y-Z (60,45,-75) deg, cf. :\n'); say('%9.4f %9.4f %9.4f\n', out.Rspace.');
 
-% 2. Dice: pure lecture model (free flight) and with floor contact
+% 2. Die: free flight in closed form, then with the floor
 p = rbsim.dice.defaults(); p.contact.enabled = false; p.tFinal = 0.3; p.dt = 1e-3;
 out.diceFree = rbsim.dice.simulate(p);
 say('\nDice free flight 0.3 s: energy drift %.2e J, |dH_A| %.2e\n', ...

@@ -10,13 +10,13 @@ function res = simulate(p)
 %
 %   Result fields
 %     t, x, params, solver                       (see architecture.md)
-%     diag.kinetic, .potential, .spring, .energy  J (energy incl. contact springs)
+%     diag.kinetic,.potential,.spring,.energy  J (energy incl. contact springs)
 %     diag.contactCount   vertices in contact
 %     diag.orthError      ||R'R - I||_F
-%     diag.topFace, .topAlignment
+%     diag.topFace,.topAlignment
 %     diag.H_A            3xN angular momentum about C in {A}
-%     summary.finalFace, .finalAlignment, .settled, .settleTime, .bounces,
-%            .maxHeight, .energyDissipated
+%     summary.finalFace,.finalAlignment,.settled,.settleTime,.bounces,
+%.maxHeight,.energyDissipated
 p = rbsim.dice.validate(p);
 G = rbsim.dice.geometry(p.edge);
 x0 = rbsim.dice.initialState(p);

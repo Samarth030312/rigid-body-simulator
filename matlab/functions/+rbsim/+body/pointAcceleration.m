@@ -14,7 +14,7 @@ function aA = pointAcceleration(aO_A, alpha, omegaS, R_AB, pB, vRelB, aRelB)
 %   Inputs: vectors in {A} except pB, vRelB, aRelB which are in {B}. Units SI.
 %   Output: aA 3xN, m/s^2.
 %
-%   Source: [LECTURE] L7-9/s22-24 (five-term expression, term names on s24).
+%   Source:  (five-term expression, term names on s24).
 arguments
     aO_A (3,1) double {mustBeFinite}
     alpha (3,1) double {mustBeFinite}

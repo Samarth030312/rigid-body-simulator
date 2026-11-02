@@ -1,4 +1,4 @@
-%% ENR209 Rigid Body Simulator - playground
+%% Rigid-body simulator - playground
 % Edit any value below and run a section with Ctrl+Enter (Run Section).
 % Each section: parameters -> simulate -> animated scene + dashboard.
 % All units SI except the angles marked "Deg" (degrees, converted inside).
@@ -19,7 +19,7 @@ p.orientation.anglesDeg = [20 -35 10];
 p.v0     = [0.4; 0.1; 0.5];       % m/s
 p.omega0 = [18; -25; 12];         % rad/s
 p.omegaFrame = 'body';            % 'body' = w^b along {B}, 'space' = w^s along {A}
-p.contact.enabled = true;         % false = pure lecture free flight (no floor)
+p.contact.enabled = true;         % false = pure free flight (no floor)
 p.contact.friction = 0.35;
 res = rbsim.dice.simulate(p);
 fprintf('Dice: top face %d, settled = %d\n', res.summary.finalFace, res.summary.settled);

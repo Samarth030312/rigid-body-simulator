@@ -5,9 +5,9 @@ function sol = ode45ref(f, tOut, x0, opts)
 %   sol = rbsim.solver.ode45ref(f, tOut, x0, RelTol=..., AbsTol=...)
 %
 %   Inputs
-%     f    : xdot = f(t, x).
-%     tOut : 1 x N output times (increasing), s.
-%     x0   : n x 1 initial state.
+%     f: xdot = f(t, x).
+%     tOut: 1 x N output times (increasing), s.
+%     x0: n x 1 initial state.
 %   Output struct with the same fields as INTEGRATERK4 (t, x, solver).
 %
 %   Used only for validation/comparison studies (ADR-0009). No SO(3) projection is

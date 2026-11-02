@@ -4,15 +4,15 @@ function [T, V, H_A, P_A] = energy(x, m, I_B, g_A)
 %   [T, V, H_A, P_A] = rbsim.body.energy(x, m, I_B, g_A)
 %
 %   Inputs
-%     x   : 18x1 rigid-body state (see RBPACK).
-%     m   : mass, kg.  I_B : 3x3 ^B[I]_C, kg*m^2.
-%     g_A : 3x1 gravitational acceleration in {A}, m/s^2 (e.g. [0;0;-9.81]).
+%     x: 18x1 rigid-body state (see RBPACK).
+%     m: mass, kg.  I_B: 3x3 ^B[I]_C, kg*m^2.
+%     g_A: 3x1 gravitational acceleration in {A}, m/s^2 (e.g. [0;0;-9.81]).
 %   Outputs
-%     T   : kinetic energy (1/2) m V_C.V_C + (1/2) w_b.(^B[I]_C w_b), J   (L17-19/s27)
-%     V   : gravitational potential energy -m g.r_C, J (datum at r = 0) (L17-19/s27)
-%     H_A : 3x1 angular momentum about C in {A}: ^A_B[R] ^B[I]_C w_b, kg*m^2/s
-%           (= ^A[I]_C ^A w^s, L14-15/s17, L16/s5-6)
-%     P_A : 3x1 linear momentum m V_C in {A}, kg*m/s                   (L14-15/s17)
+%     T: kinetic energy (1/2) m V_C.V_C + (1/2) w_b.(^B[I]_C w_b), J
+%     V: gravitational potential energy -m g.r_C, J (datum at r = 0)
+%     H_A: 3x1 angular momentum about C in {A}: ^A_B[R] ^B[I]_C w_b, kg*m^2/s
+%           (= ^A[I]_C ^A w^s,,)
+%     P_A: 3x1 linear momentum m V_C in {A}, kg*m/s
 %
 %   Note: w.[I]w is frame-independent, so the body-frame form is used.
 arguments

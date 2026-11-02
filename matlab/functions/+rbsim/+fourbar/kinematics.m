@@ -3,9 +3,9 @@ function kin = kinematics(theta1, thetaDot1, thetaDDot1, p)
 %
 %   kin = rbsim.fourbar.kinematics(theta1, thetaDot1, thetaDDot1, p)
 %
-%   Vector loop (equivalent to the lecture loop closure, L5-6/s21):
+%   Vector loop (the loop-closure constraint):
 %     l1 e(theta1) + l2 e(theta2) - l3 e(phi1) - l0 X = 0,  e(a) = [cos a; sin a]
-%   Differentiating (EXTENSION: derived from the lecture constraint), with
+%   Differentiating the loop-closure constraint, with
 %   n(a) = [-sin a; cos a] and J = [l2 n(theta2), -l3 n(phi1)]:
 %     J [theta2dot; phi1dot]   = -l1 n1 theta1dot
 %     J [theta2ddot; phi1ddot] = -l1 n1 theta1ddot + l1 e1 theta1dot^2
@@ -14,10 +14,10 @@ function kin = kinematics(theta1, thetaDot1, thetaDDot1, p)
 %   collinear (toggle position).
 %
 %   Output struct kin: all fields of FOURBARPOSITION plus
-%     .ok (false if the loop cannot close OR at a toggle), .toggle, .omega (1x3: theta1dot, theta2dot, phi1dot), .alpha (1x3),
-%     .k (1x3 kinematic coefficients d(angle)/d theta1), .kdot (1x3: d/dt of k,
+%.ok (false if the loop cannot close OR at a toggle),.toggle,.omega (1x3: theta1dot, theta2dot, phi1dot),.alpha (1x3),
+%.k (1x3 kinematic coefficients d(angle)/d theta1),.kdot (1x3: d/dt of k,
 %     per unit theta1dot; alpha = k theta1ddot + kdot theta1dot... see below),
-%     .C (2x3 COM positions), .vC (2x3), .aC (2x3), .detJ
+%.C (2x3 COM positions),.vC (2x3),.aC (2x3),.detJ
 %   COM positions: C1 = r1 e1, C2 = A + r2 e2, C3 = O_R + r3 e3.
 [kin, ok] = rbsim.fourbar.position(theta1, p);
 kin.ok = ok;

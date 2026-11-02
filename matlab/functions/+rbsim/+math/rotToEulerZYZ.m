@@ -4,13 +4,13 @@ function theta = rotToEulerZYZ(R)
 %   theta = rotToEulerZYZ(R)
 %
 %   Input
-%     R     : 3x3 ^A_B[R] = R(Z,t1) R(Y,t2) R(Z,t3).
+%     R: 3x3 ^A_B[R] = R(Z,t1) R(Y,t2) R(Z,t3).
 %   Output
-%     theta : 1x3 [t1 t2 t3], rad. '+sqrt' branch (sin t2 >= 0) [EXTENSION: branch].
+%     theta: 1x3 [t1 t2 t3], rad. '+sqrt' branch (sin t2 >= 0) engineering choice of branch.
 %
-%   Source: [LECTURE] L2-4/s31, including the singular cases
-%     r33 = 1  : t1 = t2 = 0, t3 = atan2(-r12, r11)
-%     r33 = -1 : t1 = 0, t2 = pi, t3 = atan2(r12, -r11)
+%   Source:, including the singular cases
+%     r33 = 1: t1 = t2 = 0, t3 = atan2(-r12, r11)
+%     r33 = -1: t1 = 0, t2 = pi, t3 = atan2(r12, -r11)
 arguments
     R (3,3) double {mustBeFinite}
 end

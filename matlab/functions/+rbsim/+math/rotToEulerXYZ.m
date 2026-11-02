@@ -4,13 +4,13 @@ function theta = rotToEulerXYZ(R)
 %   theta = rotToEulerXYZ(R)
 %
 %   Input
-%     R     : 3x3 ^A_B[R] = R(X,t1) R(Y,t2) R(Z,t3).
+%     R: 3x3 ^A_B[R] = R(X,t1) R(Y,t2) R(Z,t3).
 %   Output
-%     theta : 1x3 [t1 t2 t3], rad, each in [-pi, pi]. The '+sqrt' branch is
-%             returned (cos t2 >= 0) [EXTENSION: branch choice]; the lecture notes
-%             that two solution sets exist.
+%     theta: 1x3 [t1 t2 t3], rad, each in [-pi, pi]. The '+sqrt' branch is
+%             returned (cos t2 >= 0); two solution sets exist and this is the
+%             principal one.
 %
-%   Source: [LECTURE] L2-4/s26 (regular case), s27 (r13 = +-1 singular case:
+%   Singular case r13 = +-1 (gimbal lock):
 %   t3 = 0, t1 = +-atan2(r21, r22)).
 arguments
     R (3,3) double {mustBeFinite}

@@ -10,7 +10,7 @@ end
 
 % ---------- position ----------
 function testConstraintAndClosureResidualsVanish(tc)
-% eta1 = 0 (L5-6/s22) and the three loop-closure equations (L5-6/s21).
+% eta1 = 0  and the three loop-closure equations.
 p = tc.TestData.p;
 for b = [1 -1]
     p.branch = b;
@@ -26,8 +26,8 @@ for b = [1 -1]
 end
 end
 
-function testOpenBranchMatchesLectureFigure(tc)
-% L5-6/s20: theta1 ~ 75 deg, coupler above the ground, obtuse output angle.
+function testOpenBranchIsTheUncrossedAssembly(tc)
+%: theta1 ~ 75 deg, coupler above the ground, obtuse output angle.
 p = tc.TestData.p;
 pos = rbsim.fourbar.position(deg2rad(75), p);
 verifyGreaterThan(tc, pos.B(2), 0);
@@ -117,8 +117,8 @@ end
 end
 
 function testStaticsVirtualWork(tc)
-% Static holding torque equals dV/dtheta1 (virtual work, L10-13/s12-13, L17-19/s28);
-% ground reactions carry the total weight (equilibrium, L10-13/s22).
+% Static holding torque equals dV/dtheta1 (virtual work,,);
+% ground reactions carry the total weight (equilibrium,).
 p = tc.TestData.p;
 for th = tc.TestData.th(1:6:end)
     s = rbsim.fourbar.newtonEuler(th, 0, p, struct('type', 'accel', 'value', 0));
@@ -128,8 +128,8 @@ for th = tc.TestData.th(1:6:end)
 end
 end
 
-function testGeneralizedForceLectureExample5(tc)
-% L10-13/s20 (corrected, SD-07): for forces F2 at A and F3 at B and moment M1 on
+function testGeneralizedForceOfACrankPinLoad(tc)
+%   For forces F2 at A and F3 at B and a moment M1 on
 % the crank, Q_theta = M1 - F_x2 l1 sin(theta) + F_y2 l1 cos(theta). In statics
 % with g = 0, a force F2 applied at A must be balanced by tau = -Q_F-part.
 p = tc.TestData.p; p.g = 0; p.m = [0 0 0]; p.Izz = [0 0 0];
@@ -161,7 +161,7 @@ end
 
 function testSpeedDriveInverseDynamics(tc)
 % Constant crank speed: theta1 = theta0 + w t exactly; required torque satisfies
-% tau w = dE/dt (power balance, L17-19/s27).
+% tau w = dE/dt (power balance,).
 p = tc.TestData.p; p.drive.mode = 'speed'; p.drive.speedDeg = 180; p.tFinal = 2;
 p.outputEvery = 1;
 res = rbsim.fourbar.simulate(p);

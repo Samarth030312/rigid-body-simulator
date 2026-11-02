@@ -6,12 +6,12 @@ function I_A = inertiaRotate(I_B, R_AB)
 %   ^A[I] = ^A_B[R] ^B[I] ^A_B[R]^T
 %
 %   Inputs
-%     I_B  : 3x3 inertia about point C, components in {B}, kg*m^2.
-%     R_AB : 3x3 ^A_B[R].
+%     I_B: 3x3 inertia about point C, components in {B}, kg*m^2.
+%     R_AB: 3x3 ^A_B[R].
 %   Output
-%     I_A  : 3x3 inertia about the same point C, components in {A}.
+%     I_A: 3x3 inertia about the same point C, components in {A}.
 %
-%   Source: [LECTURE] L14-15/s8, L16/s4.
+%   Source:,.
 arguments
     I_B (3,3) double {mustBeFinite}
     R_AB (3,3) double {mustBeFinite}
