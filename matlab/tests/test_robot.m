@@ -23,7 +23,7 @@ function testForwardKinematicsKnownPoses(tc)
 end
 
 function testForwardKinematicsClosedForm(tc)
-% x = l1 c1 + l2 c12 + l3 c123 (planar closed form, cf.);
+% x = l1 c1 + l2 c12 + l3 c123 (the planar closed form);
 % ^0_3[R] = R(Z, theta1+theta2+theta3).
     p = tc.TestData.p;
     for k = 1:size(tc.TestData.Q, 2)

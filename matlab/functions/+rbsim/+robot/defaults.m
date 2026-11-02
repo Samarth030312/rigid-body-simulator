@@ -19,7 +19,7 @@ function p = defaults()
 %.damping 1x3 viscous joint damping b_i, N m s/rad (torsional damper,
 %              element; EXTENSION as a joint model)
 %.q0,.qd0  1x3 initial joint angles (DEG) and rates (DEG/s) - user-facing
-%.control struct, see ROBOTJOINTTORQUE:.mode 'free' | 'constant' | 'pd' |
+%.control struct, see rbsim.robot.jointTorque:.mode 'free' | 'constant' | 'pd' |
 %             'trajectory',.tau (1x3 N m),.qTargetDeg,.Kp,.Kd,
 %.gravityComp (logical),.duration (s, trajectory)
 %.tFinal,.dt,.outputEvery  integration settings (RK4, ADR-0009)

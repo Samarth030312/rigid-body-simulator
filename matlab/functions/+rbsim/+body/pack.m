@@ -9,7 +9,7 @@ function x = pack(r, v, R, omegaB)
 %     x(7:15)  ^A_B[R]  rotation matrix, column-major (R(:))
 %     x(16:18) ^A w_B^b body-fixed angular velocity, components in {B}, rad/s
 %
-%   See also RBUNPACK.
+%   See also rbsim.body.unpack.
     arguments
         r (3,1) double
         v (3,1) double

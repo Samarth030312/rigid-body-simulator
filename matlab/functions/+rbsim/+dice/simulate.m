@@ -1,7 +1,7 @@
 function res = simulate(p)
 %SIMULATE  Simulate a thrown dice; returns the standard result struct.
 %
-%   res = rbsim.dice.simulate(p)       p from DICEDEFAULTPARAMS (possibly modified)
+%   res = rbsim.dice.simulate(p)       p from rbsim.dice.defaults (possibly modified)
 %
 %   Pipeline (docs/architecture/architecture.md): validate -> initial state ->
 %   Newton-Euler derivative -> RK4 with SO(3) projection -> diagnostics -> outcome.

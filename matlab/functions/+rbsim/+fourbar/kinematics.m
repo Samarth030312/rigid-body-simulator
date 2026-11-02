@@ -13,7 +13,7 @@ function kin = kinematics(theta1, thetaDot1, thetaDDot1, p)
 %   det J = l2 l3 sin(phi1 - theta2): singular when coupler and rocker are
 %   collinear (toggle position).
 %
-%   Output struct kin: all fields of FOURBARPOSITION plus
+%   Output struct kin: all fields of rbsim.fourbar.position plus
 %.ok (false if the loop cannot close OR at a toggle),.toggle,.omega (1x3: theta1dot, theta2dot, phi1dot),.alpha (1x3),
 %.k (1x3 kinematic coefficients d(angle)/d theta1),.kdot (1x3: d/dt of k,
 %     per unit theta1dot; alpha = k theta1ddot + kdot theta1dot... see below),

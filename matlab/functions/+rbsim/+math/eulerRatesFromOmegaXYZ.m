@@ -4,8 +4,8 @@ function thetaDot = eulerRatesFromOmegaXYZ(theta, omegaS)
 %   thetaDot = eulerRatesFromOmegaXYZ(theta, omegaS)
 %
 %   Inverts the relation omegaS = E(theta) * thetaDot,
-%   i.e. the "coupled non-linear differential equations" of  that are
-%   integrated in the numerical example of.
+%   a coupled non-linear system in the three angles, which is what gets
+%   integrated when a body is propagated in Euler-angle coordinates.
 %
 %   Inputs
 %     theta: 3x1 X-Y-Z Euler angles, rad.
@@ -13,8 +13,8 @@ function thetaDot = eulerRatesFromOmegaXYZ(theta, omegaS)
 %   Output
 %     thetaDot: 3x1, rad/s.
 %
-%   Singular when cos(t2) = 0 (t2 = +-pi/2), the Euler-angle singularity of
-%; an error is raised there. The closed-form inverse is an
+%   Singular when cos(t2) = 0 (t2 = +-pi/2), the gimbal-lock configuration of
+%   the X-Y-Z set; an error is raised there. The closed-form inverse is an
 %   engineering choice derived from the matrix E:
 %     t3dot = (-s1*wy + c1*wz)/c2
 %     t2dot =   c1*wy + s1*wz

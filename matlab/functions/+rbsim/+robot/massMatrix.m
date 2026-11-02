@@ -4,7 +4,7 @@ function M = massMatrix(q, p)
 %   M = rbsim.robot.massMatrix(q, p)
 %
 %   Column j is the RNE torque for qdd = e_j with qd = 0 and g = 0, because
-%   tau = M(q) qdd + C(q,qd) + G(q) (form of) and C, G vanish then.
+%   tau = M(q) qdd + C(q,qd) + G(q), in which C and G vanish for that input.
 %   The standard way to read M(q) out of an inverse-dynamics routine.
     M = zeros(3);
     E = eye(3);

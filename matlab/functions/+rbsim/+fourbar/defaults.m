@@ -3,7 +3,7 @@ function p = defaults()
 %
 %   p = rbsim.fourbar.defaults
 %
-%   Geometry and notation of: ground link l0 from O_L (origin of {0})
+%   Geometry and notation: ground link l0 from O_L (origin of {0})
 %   to O_R = (l0, 0); crank l1 (link 1, input angle theta1 from X_L); coupler l2
 %   (link 2); output/rocker l3 (link 3, angle phi1 from X_R). All angles CCW.
 %
@@ -15,7 +15,7 @@ function p = defaults()
 %.width      [w1 w2 w3] m (inertia default only)
 %.Izz        [I1 I2 I3] about each COM, kg m^2 (default slender box,)
 %.g          gravity magnitude along -Y_0, m/s^2
-%.branch     +1 'open' (configuration of), -1 'crossed'
+%.branch     +1 'open' assembly, -1 'crossed'
 %.theta0Deg,.thetaDot0Deg  initial crank angle (deg) and rate (deg/s)
 %.drive      struct:.mode 'free' | 'torque' | 'speed'
 %.torque (N m, constant crank torque, 'torque' mode)

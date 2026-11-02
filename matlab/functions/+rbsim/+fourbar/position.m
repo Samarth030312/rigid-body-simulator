@@ -9,16 +9,16 @@ function [pos, ok] = position(theta1, p)
 %   with the circle of radius l3 about O_R (engineering choice of solution method):
 %     e = A - O_R, psi = atan2(e_y, e_x), gamma = acos((l3^2 + |e|^2 - l2^2)/(2 l3 |e|))
 %     phi1 = psi - branch * gamma
-%   branch = +1 reproduces the configuration drawn on  ("open").
+%   branch = +1 is the "open" assembly, -1 the "crossed" one.
 %
 %   Outputs
 %     ok: false if the loop cannot close for this theta1 (|e| outside
 %           [|l2-l3|, l2+l3]); pos fields are then NaN.
 %     pos: struct with points O_L, A, B, O_R (2x1, m), angles theta1, theta2
 %           (absolute coupler angle), phi1 (rad), relative angles phi2,
-%           phi3 (, in [0, 2pi)), residuals:
-%.eta1 (m^2),.closure (2x1, m: first two equations of),
-%.angleSum (rad: third equation of  modulo 2pi),
+%           phi3 (in [0, 2pi)), residuals:
+%.eta1 (m^2),.closure (2x1, m: the two components of the vector loop),
+%.angleSum (rad: theta1 + phi2 + phi3 + (pi - phi1) - 4pi, wrapped),
 %.transmission (rad: angle between coupler and rocker at B).
     l0 = p.l(1); l1 = p.l(2); l2 = p.l(3); l3 = p.l(4);
     OL = [0; 0]; OR = [l0; 0];

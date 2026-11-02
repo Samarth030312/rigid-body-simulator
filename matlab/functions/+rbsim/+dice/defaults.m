@@ -4,7 +4,7 @@ function p = defaults()
 %   p = rbsim.dice.defaults
 %
 %   Fields (all SI; angles in the orientation spec are DEGREES because they are a
-%   user-facing input, converted once in DICEINITIALSTATE):
+%   user-facing input, converted once in rbsim.dice.initialState):
 %.edge          cube edge length a, m
 %.mass          mass m, kg
 %.g             gravitational acceleration in {A}, m/s^2 (CONVENTIONS 1)

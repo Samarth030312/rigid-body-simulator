@@ -13,7 +13,7 @@ function res = simulate(p)
 %
 %   Result diag fields (1xN unless noted): tau, theta2, phi1, omega (3xN),
 %   alpha (3xN), reactions (struct of 2xN), energy, kinetic, potential, work,
-%   energyBalance, closureResidual (max |loop-closure| of, m),
+%   energyBalance, closureResidual (max |loop-closure| over the run, m),
 %   eta1, transmissionDeg, detJ, points (struct of 2xN: A, B)
     p = rbsim.fourbar.validate(p);
     th0 = deg2rad(p.theta0Deg);

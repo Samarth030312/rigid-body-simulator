@@ -9,7 +9,7 @@ function tau = jointTorque(t, x, p, ref)
 %     'pd'         tau = Kp (q* - q) - Kd qd [+ G(q) if gravityComp]  (engineering choice)
 %     'trajectory' computed torque: tau = M(q)(qdd_d + Kd e_d + Kp e) + C + G
 %                  tracking the smooth reference in REF (engineering choice)
-%   Joint viscous damping -b_i qd_i is applied separately in ROBOTDYNAMICS.
+%   Joint viscous damping -b_i qd_i is applied separately in rbsim.robot.dynamics.
     q = x(1:3); qd = x(4:6);
     c = p.control;
     switch c.mode

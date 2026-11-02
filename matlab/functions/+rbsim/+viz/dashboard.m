@@ -4,7 +4,7 @@ function cursors = dashboard(axs, res, kind)
 %   cursors = rbsim.viz.dashboard(axs, res, kind)    kind = 'dice' | 'robot' | 'fourbar'
 %
 %   axs: 1x4 axes handles. Returns 1x4 time-cursor lines (move them with
-%   VIZSETCURSOR). One quantity family per panel, one y-axis per panel, legend
+%   rbsim.viz.setCursor). One quantity family per panel, one y-axis per panel, legend
 %   whenever there are >= 2 series; series colours follow the entity (joint/link i
 %   always uses categorical slot i).
     th = rbsim.viz.theme();

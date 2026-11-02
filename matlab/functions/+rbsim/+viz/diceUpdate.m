@@ -11,7 +11,7 @@ function diceUpdate(h, k)
     end
     set(h.trail, 'XData', res.x(1, 1:k), 'YData', res.x(2, 1:k), 'ZData', res.x(3, 1:k));
     rbsim.viz.setArrow3(h.vArrow, r, h.scale.v * v);
-    ws = R * wb;                                   % ^A w^s = R ^A w^b ()
+    ws = R * wb;                                   % ^A w^s = R ^A w^b
     rbsim.viz.setArrow3(h.wArrow, r, h.scale.w * ws);
     th = rbsim.math.rotToEulerXYZ(R);
     set(h.label, 'String', sprintf(['t = %6.3f s   top face = %d\n' ...

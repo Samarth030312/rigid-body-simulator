@@ -8,7 +8,7 @@ function [sol, kin] = newtonEuler(theta1, thetaDot1, p, known)
 %   Load torque p.drive.loadTorque acts on link 3; crank bearing damping
 %   -b thetaDot1 acts on link 1 (both optional).
 %
-%   Free-body diagrams (EXTENSION, ADR-0011; laws from):
+%   Free-body diagrams, one per link (EXTENSION, ADR-0011):
 %     link 1:  F_OL - F_A + m1 g = m1 a_C1
 %              tau - b th1dot + (O_L - C1) x F_OL + (A - C1) x (-F_A) = I1 alpha1
 %     link 2:  F_A - F_B + m2 g = m2 a_C2

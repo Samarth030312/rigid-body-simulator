@@ -35,7 +35,7 @@ function [F_A, M_A, info] = contactLoads(x, p, G)
         return
     end
     wb = x(16:18);
-    ws = R * wb;                           % ^A w^s = R ^A w^b  ()
+    ws = R * wb;                           % ^A w^s = R ^A w^b
     rc = rv(:, idx);
     Vc = x(4:6) + [ws(2)*rc(3,:) - ws(3)*rc(2,:);      % V_C + w^s x r  (vectorised)
                    ws(3)*rc(1,:) - ws(1)*rc(3,:);

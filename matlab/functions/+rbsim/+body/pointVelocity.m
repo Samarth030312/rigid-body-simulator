@@ -15,9 +15,10 @@ function vA = pointVelocity(vO_A, omegaS, R_AB, pB, vRelB)
 %   Output
 %     vA: 3xN, m/s.
 %
-%   Source:. Note:  writes the middle term as
-%   w x ^A p; the correct operand is the vector from O_B, (^A_B[R] ^B p), as on
-%    (recorded in docs/concepts/SOURCE_DEFECTS.md).
+%   A common slip is to write the middle term as w x ^A p, with ^A p measured
+%   from the origin of {A}. The operand is the vector from O_B to the point,
+%   expressed in {A}, i.e. ^A_B[R] ^B p: only that part of the position turns
+%   with the body. test_angular_velocity pins this against finite differences.
     arguments
         vO_A (3,1) double {mustBeFinite}
         omegaS (3,1) double {mustBeFinite}

@@ -7,7 +7,7 @@ function [xdot, tauNet] = dynamics(t, x, p, ref)
 %   non-conservative power is tauNet' * qd (used for the energy balance).
 %
 %   M(q) qdd = tau - h(q, qd) - b.* qd,   h = C + G = RNE(q, qd, 0)
-%   (form; M from ROBOTMASSMATRIX; EXTENSION: forward dynamics).
+%   (form; M from rbsim.robot.massMatrix; EXTENSION: forward dynamics).
     q = x(1:3); qd = x(4:6);
     tau = rbsim.robot.jointTorque(t, x, p, ref) - p.damping(:) .* qd;
     h = rbsim.robot.newtonEuler(q, qd, zeros(3, 1), p);

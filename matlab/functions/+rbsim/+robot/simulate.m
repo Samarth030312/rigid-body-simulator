@@ -16,8 +16,8 @@ function res = simulate(p)
     qStart = x0(1:3); qEnd = deg2rad(p.control.qTargetDeg(:));
     ref = @(t) rbsim.robot.reference(t, qStart, qEnd, p.control.duration);
     % Internally the actuator + damper work W is integrated as a 7th state
-    % (dW/dt = tauNet. qd,  power) so the energy balance is checked to
-    % integrator accuracy; the public state stays x = [q; qd] (CONVENTIONS 6.3).
+    % (dW/dt = tauNet . qd, the net mechanical power) so the energy balance is
+    % checked to integrator accuracy; the public state stays x = [q; qd] (CONVENTIONS 6.3).
     sol = rbsim.solver.rk4(@(t, z) augmented(t, z, p, ref), [0 p.tFinal], [x0; 0], p.dt, ...
         OutputEvery=p.outputEvery);
     res.t = sol.t; res.x = sol.x(1:6, :); res.params = p; res.solver = sol.solver;

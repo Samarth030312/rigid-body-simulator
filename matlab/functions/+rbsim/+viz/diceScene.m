@@ -1,5 +1,5 @@
 function h = diceScene(ax, res, follow)
-%DICESCENE  Build the 3D dice scene for a dice result; update with VIZDICEUPDATE.
+%DICESCENE  Build the 3D dice scene for a dice result; update with rbsim.viz.diceUpdate.
 %
 %   h = rbsim.viz.diceScene(ax, res)
 %   h = rbsim.viz.diceScene(ax, res, follow)   follow = true: camera box tracks the die

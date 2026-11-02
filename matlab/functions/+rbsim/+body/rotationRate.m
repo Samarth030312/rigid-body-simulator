@@ -9,8 +9,8 @@ function Rdot = rotationRate(R, omegaB)
 %   Output
 %     Rdot: 3x3, Rdot = R * [omegaB x]  (= [omegaS x] * R).
 %
-%   Source: definition [Omega]_L = R' Rdot  rearranged; the
-%   equivalent space-fixed form Rdot = [Omega]_R R appears on.
+%   From the definition [Omega]_L = R' Rdot, rearranged. The equivalent
+%   space-fixed form is Rdot = [Omega]_R R, with [Omega]_R = Rdot R'.
     arguments
         R (3,3) double {mustBeFinite}
         omegaB (3,1) double {mustBeFinite}

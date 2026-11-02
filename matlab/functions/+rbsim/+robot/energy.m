@@ -8,7 +8,7 @@ function [T, V] = energy(x, p)
 %     T = sum 1/2 m_i V_Ci.V_Ci + 1/2 Izz_i w_i^2
 %     V = sum m_i g y_Ci   (gravity along -Y_0, datum y = 0)
 %   COM velocities by frame propagation: V_Ci = w_i x (C_i - O_1) summed along
-%   the chain, evaluated here with the planar closed form of.
+%   the chain, evaluated here with the planar closed form.
     q = x(1:3); qd = x(4:6);
     fk = rbsim.robot.forwardKinematics(q, p);
     T = 0; V = 0;

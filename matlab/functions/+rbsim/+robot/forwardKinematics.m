@@ -5,7 +5,7 @@ function fk = forwardKinematics(q, p)
 %
 %   Inputs
 %     q: 3x1 joint angles, rad (relative, CCW,).
-%     p: robot parameters (ROBOTDEFAULTPARAMS).
+%     p: robot parameters (rbsim.robot.defaults).
 %   Output struct (all in the fixed frame {0}, metres)
 %.R      1x4 cell: ^0_i[R] for i = 1,2,3 and {Tool}
 %.O      3x4 origins O_1, O_2, O_3, O_Tool

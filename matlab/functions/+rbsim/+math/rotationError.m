@@ -9,8 +9,8 @@ function [orthErr, detErr] = rotationError(R)
 %     orthErr: Frobenius norm of (R'*R - I). Zero for an orthonormal matrix.
 %     detErr: |det(R) - 1|. Zero for a proper rotation.
 %
-%   Source: properties det = +1 and R'R = [U],. Metric choice
-%   (Frobenius norm) is an engineering choice.
+%   Measures the two defining properties of SO(3), R'R = I and det R = +1.
+%   Using the Frobenius norm for the first is an engineering choice.
     arguments
         R (3,3) double
     end

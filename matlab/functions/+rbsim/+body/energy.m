@@ -4,7 +4,7 @@ function [T, V, H_A, P_A] = energy(x, m, I_B, g_A)
 %   [T, V, H_A, P_A] = rbsim.body.energy(x, m, I_B, g_A)
 %
 %   Inputs
-%     x: 18x1 rigid-body state (see RBPACK).
+%     x: 18x1 rigid-body state (see rbsim.body.pack).
 %     m: mass, kg.  I_B: 3x3 ^B[I]_C, kg*m^2.
 %     g_A: 3x1 gravitational acceleration in {A}, m/s^2 (e.g. [0;0;-9.81]).
 %   Outputs

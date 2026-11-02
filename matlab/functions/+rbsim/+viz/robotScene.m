@@ -1,5 +1,5 @@
 function h = robotScene(ax, res)
-%ROBOTSCENE  Planar 3R scene (links, joints, frames {i}, tool path); see VIZROBOTUPDATE.
+%ROBOTSCENE  Planar 3R scene (links, joints, frames {i}, tool path); see rbsim.viz.robotUpdate.
     th = rbsim.viz.theme();
     cla(ax, 'reset'); hold(ax, 'on');
     p = res.params; L = sum(p.l);

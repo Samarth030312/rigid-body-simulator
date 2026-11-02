@@ -5,8 +5,9 @@ function xdot = dynamics(~, x, p, G, I_B)
 %
 %   I_B = rbsim.body.inertiaCube(p.mass, p.edge), precomputed by the caller (inner loop).
 %
-%   External loads: weight m g at C (; no moment about C) and, if enabled,
-%   floor contact (DICECONTACTLOADS). Moments are converted to {B} for Euler's
+%   External loads: weight m g at C (no moment about C, since it acts there)
+%   and, if enabled, floor contact (rbsim.dice.contactLoads). Moments are
+%   converted to {B} for Euler's
 %   equation: ^B M = R' ^A M (CONVENTIONS 6.2).
     [Fc, Mc] = rbsim.dice.contactLoads(x, p, G);
     R = reshape(x(7:15), 3, 3);

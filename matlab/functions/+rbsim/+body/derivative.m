@@ -4,7 +4,7 @@ function xdot = derivative(x, m, I_B, F_A, M_B)
 %   xdot = rbsim.body.derivative(x, m, I_B, F_A, M_B)
 %
 %   Inputs
-%     x: 18x1 state [r_C; V_C; R(:); w_b] (see RBPACK).
+%     x: 18x1 state [r_C; V_C; R(:); w_b] (see rbsim.body.pack).
 %     m: mass, kg.
 %     I_B: 3x3 ^B[I]_C, inertia about the COM in body frame {B}, kg*m^2.
 %     F_A: 3x1 resultant external force, components in {A}, N.
