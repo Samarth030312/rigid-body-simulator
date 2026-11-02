@@ -34,7 +34,7 @@ or, from a shell:
 ./scripts/run_tests.sh
 ```
 
-115 tests, about two minutes. Any failure exits non-zero and names the test. The same suite
+118 tests, about two minutes. Any failure exits non-zero and names the test. The same suite
 runs from the app's **Validation** tab.
 
 ## Reproduce the reference numbers

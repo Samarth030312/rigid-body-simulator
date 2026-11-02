@@ -1,6 +1,6 @@
 # Roadmap
 
-Current state: 1.0.0, three models validated, 115 tests passing. The open limitations
+Current state: 1.0.0, three models validated, 118 tests passing. The open limitations
 behind these items are listed in
 [docs/knowledge-base/OPEN_ITEMS.md](docs/knowledge-base/OPEN_ITEMS.md).
 

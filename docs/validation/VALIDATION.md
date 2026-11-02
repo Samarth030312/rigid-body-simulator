@@ -1,9 +1,9 @@
 # Validation
 
-Every claim in this repository is backed by a test that runs on demand. The suite is 115
+Every claim in this repository is backed by a test that runs on demand. The suite is 118
 tests; `setup test`, or `scripts/run_tests.sh`, runs all of them and exits non-zero on any
-failure. Last full run: **115 passed, 0 failed**, 137 s, MATLAB R2026a Update 5 on Ubuntu
-22.04.
+failure. Last full run: **118 passed, 0 failed**, 127.9 s, MATLAB R2026a Update 5 on Ubuntu
+22.04.5, and green on Linux, Windows and macOS in CI.
 
 ## How the checks are built
 
@@ -28,7 +28,7 @@ Three regression values exist, and are labelled as such where they appear.
 
 | Area | Tests | What is established |
 |---|---|---|
-| `test_rotations` | 26 | group properties (`RᵀR = I`, `det = +1`, inverse = transpose); right-hand sense; closed-form matrices for body- and space-fixed triples; the equivalence of a body-fixed X–Y–Z triple and the reversed space-fixed triple; Rodrigues' formula and its inverse including both singular cases; eigenstructure; X–Y–Z and Z–Y–Z inverses including gimbal lock; projection back onto SO(3) |
+| `test_rotations` | 29 | group properties (`RᵀR = I`, `det = +1`, inverse = transpose); right-hand sense; closed-form matrices for body- and space-fixed triples; the equivalence of a body-fixed X–Y–Z triple and the reversed space-fixed triple; Rodrigues' formula and its inverse including both singular cases, the angle held to a few `ε` across a sweep through `φ = 0` and `φ = π` and the axis recovered at `π` about seven different axes; eigenstructure; X–Y–Z and Z–Y–Z inverses including gimbal lock; projection back onto SO(3) |
 | `test_angular_velocity` | 10 | `[Ω]p = ω × p`; `ω^s` and `ω^b` recovered from a numerically differentiated `Ṙ` agree with the closed-form rate maps; `ω^s = R ω^b`; `Ṙ = R[ω^b×] = [ω^s×]R`; point velocity and the five-term acceleration against finite differences |
 | `test_inertia` | 6 | box, cube, rotated and offset inertias against a direct discretisation of `−Σ m[r][r]`, which also fixes the sign of the products of inertia; the parallel-axis and perpendicular-axis theorems; symmetry and positive definiteness |
 | `test_rigid_body_dynamics` | 13 | a body at rest stays at rest; pure translation; the exact projectile; a cube's fixed-axis tumble; the symmetric top's closed-form precession; energy and angular momentum conserved when they should be; `d(H)/dt = M`; measured fourth-order convergence; agreement with `ode45`; the solver's stop and output-decimation behaviour |

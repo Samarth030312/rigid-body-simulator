@@ -3,13 +3,12 @@
 **Three-dimensional rigid-body dynamics in MATLAB, from Newton's and Euler's equations up:
 a thrown die that lands on a face nobody chose, a planar three-link manipulator with
 recursive Newton–Euler dynamics and four controllers, and a four-bar linkage solved through
-its loop-closure constraint — with an interactive lab app, diagnostic dashboards and 115
+its loop-closure constraint — with an interactive lab app, diagnostic dashboards and 118
 tests that check the physics against closed-form answers and conservation laws.**
 
 [![CI](https://github.com/Samarth030312/rigid-body-simulator/actions/workflows/ci.yml/badge.svg)](https://github.com/Samarth030312/rigid-body-simulator/actions/workflows/ci.yml)
 ![MATLAB](https://img.shields.io/badge/MATLAB-R2021b%2B-orange)
 ![Toolboxes](https://img.shields.io/badge/toolboxes-none-success)
-![Tests](https://img.shields.io/badge/tests-115%20passing-success)
 ![Platforms](https://img.shields.io/badge/runs%20on-Windows%20%C2%B7%20macOS%20%C2%B7%20Linux-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -41,7 +40,7 @@ Without the app:
 setup
 res = rbsim.dice.simulate(rbsim.dice.defaults());   res.summary
 rigid_body_examples      % the reference numbers below
-setup test               % 115 tests, about two minutes
+setup test               % 118 tests, about two minutes
 ```
 
 ## What it shows
@@ -117,7 +116,7 @@ setup.m                      path, checks, app, tests — the only entry point
 matlab/functions/+rbsim/     math · body · solver · dice · robot · fourbar · viz
 matlab/apps/rigid_body_lab/  the lab app
 matlab/scripts/              worked examples, playground, figure generation
-matlab/tests/                115 tests, matlab.unittest
+matlab/tests/                118 tests, matlab.unittest
 docs/                        the pages above
 scripts/validation/          repository hygiene, also run in CI
 ```

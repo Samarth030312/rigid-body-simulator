@@ -7,7 +7,9 @@ the physics rather than the plumbing.
 
 - **Mathematical core.** Rotation matrices with the group invariants enforced and tested;
   elementary, axis–angle (Rodrigues) and both body-fixed and space-fixed triple rotations
-  for all twelve sequences; X–Y–Z and Z–Y–Z inverses including their singular branches;
+  for all twelve sequences; the axis–angle inverse taken from `atan2` of the antisymmetric
+  part rather than `acos` of the trace, which costs half the significant digits near
+  `φ = 0` and `φ = π`; X–Y–Z and Z–Y–Z inverses including their singular branches;
   skew matrices; space- and body-fixed angular velocity from the derivative of the rotation
   matrix; Euler-angle rate maps and the X–Y–Z inverse.
 - **Rigid-body dynamics.** Inertia of a box and a cube, change of frame, parallel axis;
@@ -37,7 +39,7 @@ the physics rather than the plumbing.
   scrubbing, a results table per model, the test suite runnable from inside the app, and a
   conventions page. The app computes no mechanics; a test enforces that the mechanics
   packages never reach into it.
-- **Validation.** 115 tests across ten files: closed-form answers, conservation laws,
+- **Validation.** 118 tests across ten files: closed-form answers, conservation laws,
   independent second derivations and finite differences. Reproducible reference numbers in
   `rigid_body_examples`.
 - **Repository.** One `rbsim` package tree under `matlab/`, `setup.m` as the only entry
