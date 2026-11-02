@@ -1,5 +1,5 @@
 function p = defaults()
-%DEFAULTS Default parameters for the dice simulation (SI units).
+%DEFAULTS  Default parameters for the dice simulation (SI units).
 %
 %   p = rbsim.dice.defaults
 %
@@ -24,18 +24,18 @@ function p = defaults()
 %.stopWhenSettled  stop once at rest for 0.1 s (contact only)
 %
 %   Default dice: 16 mm cube of density ~1150 kg/m^3 (typical acrylic) -> 4.7 g.
-p.edge = 0.016;
-p.mass = 1150 * p.edge^3;
-p.g = [0; 0; -9.81];
-p.r0 = [0; 0; 0.15];
-p.orientation = struct('type', 'body', 'sequence', 'XYZ', 'anglesDeg', [20 -35 10]);
-p.v0 = [0.4; 0.1; 0.5];
-p.omega0 = [18; -25; 12];
-p.omegaFrame = 'body';
-p.contact = struct('enabled', true, 'floorZ', 0, 'stiffness', 2e4, ...
-    'damping', 4, 'friction', 0.35, 'frictionVelocity', 5e-3);
-p.tFinal = 3;
-p.dt = 1e-4;
-p.outputEvery = 20;
-p.stopWhenSettled = true;
+    p.edge = 0.016;
+    p.mass = 1150 * p.edge^3;
+    p.g = [0; 0; -9.81];
+    p.r0 = [0; 0; 0.15];
+    p.orientation = struct('type', 'body', 'sequence', 'XYZ', 'anglesDeg', [20 -35 10]);
+    p.v0 = [0.4; 0.1; 0.5];
+    p.omega0 = [18; -25; 12];
+    p.omegaFrame = 'body';
+    p.contact = struct('enabled', true, 'floorZ', 0, 'stiffness', 2e4, ...
+        'damping', 4, 'friction', 0.35, 'frictionVelocity', 5e-3);
+    p.tFinal = 3;
+    p.dt = 1e-4;
+    p.outputEvery = 20;
+    p.stopWhenSettled = true;
 end

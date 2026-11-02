@@ -1,5 +1,5 @@
 function R = rotY(phi)
-%ROTY Simple rotation about the Y axis, [R(Y,phi)].
+%ROTY  Simple rotation about the Y axis, [R(Y,phi)].
 %
 %   R = rotY(phi)
 %
@@ -8,11 +8,11 @@ function R = rotY(phi)
 %   Output
 %     R: 3x3 rotation matrix; maps ^B r -> ^A r.
 %
-arguments
-    phi (1,1) double {mustBeFinite}
-end
-c = cos(phi); s = sin(phi);
-R = [ c 0 s;
-      0 1 0;
-     -s 0 c];
+    arguments
+        phi (1,1) double {mustBeFinite}
+    end
+    c = cos(phi); s = sin(phi);
+    R = [ c 0 s;
+          0 1 0;
+         -s 0 c];
 end

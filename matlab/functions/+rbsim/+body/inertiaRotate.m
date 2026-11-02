@@ -1,5 +1,5 @@
 function I_A = inertiaRotate(I_B, R_AB)
-%INERTIAROTATE Express an inertia matrix in another frame with the same origin.
+%INERTIAROTATE  Express an inertia matrix in another frame with the same origin.
 %
 %   I_A = inertiaRotate(I_B, R_AB)
 %
@@ -12,10 +12,10 @@ function I_A = inertiaRotate(I_B, R_AB)
 %     I_A: 3x3 inertia about the same point C, components in {A}.
 %
 %   Source:,.
-arguments
-    I_B (3,3) double {mustBeFinite}
-    R_AB (3,3) double {mustBeFinite}
-end
-I_A = R_AB * I_B * R_AB.';
-I_A = 0.5 * (I_A + I_A.');   % remove round-off asymmetry
+    arguments
+        I_B (3,3) double {mustBeFinite}
+        R_AB (3,3) double {mustBeFinite}
+    end
+    I_A = R_AB * I_B * R_AB.';
+    I_A = 0.5 * (I_A + I_A.');   % remove round-off asymmetry
 end

@@ -80,7 +80,7 @@ classdef RigidBodyLabApp < handle
 
         % ------------------------------------------------------------ API
         function p = getParams(app, kind)
-            %GETPARAMS Parameter struct for KIND from the current form values.
+            %GETPARAMS  Parameter struct for KIND from the current form values.
             v = app.formValues(kind);
             switch kind
                 case 'dice',    p = diceParamsFromForm(v);
@@ -90,7 +90,7 @@ classdef RigidBodyLabApp < handle
         end
 
         function setField(app, kind, key, value)
-            %SETFIELD Set a form field (numeric vector, char for dropdowns, logical).
+            %SETFIELD  Set a form field (numeric vector, char for dropdowns, logical).
             h = app.Forms.(kind)(key);
             if iscell(h)
                 for i = 1:numel(h), h{i}.Value = value(i); end
@@ -100,7 +100,7 @@ classdef RigidBodyLabApp < handle
         end
 
         function ok = run(app, kind)
-            %RUN Simulate KIND with the form parameters and display the result.
+            %RUN  Simulate KIND with the form parameters and display the result.
             app.pause();
             ok = false;
             app.setStatus(kind, 'Simulating...', 'busy');
@@ -127,7 +127,7 @@ classdef RigidBodyLabApp < handle
         end
 
         function showSample(app, kind, k)
-            %SHOWSAMPLE Display sample K (index into res.t) of the last result.
+            %SHOWSAMPLE  Display sample K (index into res.t) of the last result.
             if ~isfield(app.Results, kind), return; end
             res = app.Results.(kind);
             k = max(1, min(numel(res.t), round(k)));
@@ -142,7 +142,7 @@ classdef RigidBodyLabApp < handle
         end
 
         function resetForm(app, kind)
-            %RESETFORM Restore default parameters and clear the displays.
+            %RESETFORM  Restore default parameters and clear the displays.
             app.pause();
             spec = formSpec(kind);
             for i = 1:size(spec, 1)
@@ -179,12 +179,12 @@ classdef RigidBodyLabApp < handle
         end
 
         function randomThrowForTest(app)
-            %RANDOMTHROWFORTEST Same as the 'Random throw' button (test hook).
+            %RANDOMTHROWFORTEST  Same as the 'Random throw' button (test hook).
             app.randomThrow();
         end
 
         function results = runValidation(app)
-            %RUNVALIDATION Run the full test suite and list the results.
+            %RUNVALIDATION  Run the full test suite and list the results.
             app.ValidationLabel.Text = 'Running test suite...';
             drawnow;
             root = fileparts(fileparts(fileparts(mfilename('fullpath'))));

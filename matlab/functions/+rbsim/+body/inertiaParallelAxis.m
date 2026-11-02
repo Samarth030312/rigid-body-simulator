@@ -1,5 +1,5 @@
 function I_O = inertiaParallelAxis(I_C, m, d)
-%INERTIAPARALLELAXIS Inertia about a point O from the inertia about the COM C.
+%INERTIAPARALLELAXIS  Inertia about a point O from the inertia about the COM C.
 %
 %   I_O = inertiaParallelAxis(I_C, m, d)
 %
@@ -14,11 +14,11 @@ function I_O = inertiaParallelAxis(I_C, m, d)
 %     I_O: 3x3 inertia about O, axes parallel to {F}.
 %
 %   Parallel-axis (Huygens-Steiner) theorem.
-arguments
-    I_C (3,3) double {mustBeFinite}
-    m (1,1) double {mustBeNonnegative, mustBeFinite}
-    d (3,1) double {mustBeFinite}
-end
-D = rbsim.math.skew(d);
-I_O = I_C - m * (D * D);
+    arguments
+        I_C (3,3) double {mustBeFinite}
+        m (1,1) double {mustBeNonnegative, mustBeFinite}
+        d (3,1) double {mustBeFinite}
+    end
+    D = rbsim.math.skew(d);
+    I_O = I_C - m * (D * D);
 end

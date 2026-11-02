@@ -1,5 +1,5 @@
 function [omegaS, omegaB] = angularVelocityFromRdot(R, Rdot)
-%ANGULARVELOCITYFROMRDOT Space- and body-fixed angular velocity from R and dR/dt.
+%ANGULARVELOCITYFROMRDOT  Space- and body-fixed angular velocity from R and dR/dt.
 %
 %   [omegaS, omegaB] = angularVelocityFromRdot(R, Rdot)
 %
@@ -11,10 +11,10 @@ function [omegaS, omegaB] = angularVelocityFromRdot(R, Rdot)
 %     omegaB: 3x1 from [Omega]_L = R'*Rdot  (body-fixed, components in {i}), rad/s.
 %
 %   Source:  ([Omega]_R), s9-10 ([Omega]_L).
-arguments
-    R (3,3) double {mustBeFinite}
-    Rdot (3,3) double {mustBeFinite}
-end
-omegaS = rbsim.math.unskew(Rdot * R.');
-omegaB = rbsim.math.unskew(R.' * Rdot);
+    arguments
+        R (3,3) double {mustBeFinite}
+        Rdot (3,3) double {mustBeFinite}
+    end
+    omegaS = rbsim.math.unskew(Rdot * R.');
+    omegaB = rbsim.math.unskew(R.' * Rdot);
 end

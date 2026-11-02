@@ -1,5 +1,5 @@
 function xdot = derivative(x, m, I_B, F_A, M_B)
-%DERIVATIVE Newton-Euler state derivative of a single free rigid body.
+%DERIVATIVE  Newton-Euler state derivative of a single free rigid body.
 %
 %   xdot = rbsim.body.derivative(x, m, I_B, F_A, M_B)
 %
@@ -20,11 +20,11 @@ function xdot = derivative(x, m, I_B, F_A, M_B)
 %
 %   Performance note: this is an inner-loop function (called 4x per RK4 step), so
 %   it has no argument validation; application simulators validate inputs once.
-v = x(4:6);
-R = reshape(x(7:15), 3, 3);
-wb = x(16:18);
-vdot = F_A / m;
-Rdot = R * [0 -wb(3) wb(2); wb(3) 0 -wb(1); -wb(2) wb(1) 0];   % R [wb x]
-wbdot = I_B \ (M_B - cross(wb, I_B * wb));
-xdot = [v; vdot; Rdot(:); wbdot];
+    v = x(4:6);
+    R = reshape(x(7:15), 3, 3);
+    wb = x(16:18);
+    vdot = F_A / m;
+    Rdot = R * [0 -wb(3) wb(2); wb(3) 0 -wb(1); -wb(2) wb(1) 0];   % R [wb x]
+    wbdot = I_B \ (M_B - cross(wb, I_B * wb));
+    xdot = [v; vdot; Rdot(:); wbdot];
 end

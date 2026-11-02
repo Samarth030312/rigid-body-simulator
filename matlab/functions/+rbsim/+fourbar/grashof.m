@@ -1,5 +1,5 @@
 function [isGrashof, type] = grashof(l)
-%GRASHOF Grashof condition and mechanism type for link lengths [l0 l1 l2 l3].
+%GRASHOF  Grashof condition and mechanism type for link lengths [l0 l1 l2 l3].
 %
 %   [isGrashof, type] = rbsim.fourbar.grashof(l)
 %
@@ -8,18 +8,18 @@ function [isGrashof, type] = grashof(l)
 %   (l3) -> 'crank-rocker' (the shortest link fully rotates), coupler ->
 %   'double-rocker'. Otherwise 'triple-rocker (non-Grashof)'.
 %   Grashof's criterion and the classical four-bar types.
-arguments
-    l (1,4) double {mustBePositive}
-end
-s = sort(l);
-isGrashof = s(1) + s(4) <= s(2) + s(3) + 1e-12;
-[~, iShort] = min(l);
-if ~isGrashof
-    type = 'triple-rocker (non-Grashof)';
-elseif abs(s(1) + s(4) - s(2) - s(3)) < 1e-12
-    type = 'change-point (Grashof equality)';
-else
-    names = {'double-crank', 'crank-rocker', 'double-rocker', 'rocker-crank'};
-    type = names{iShort};
-end
+    arguments
+        l (1,4) double {mustBePositive}
+    end
+    s = sort(l);
+    isGrashof = s(1) + s(4) <= s(2) + s(3) + 1e-12;
+    [~, iShort] = min(l);
+    if ~isGrashof
+        type = 'triple-rocker (non-Grashof)';
+    elseif abs(s(1) + s(4) - s(2) - s(3)) < 1e-12
+        type = 'change-point (Grashof equality)';
+    else
+        names = {'double-crank', 'crank-rocker', 'double-rocker', 'rocker-crank'};
+        type = names{iShort};
+    end
 end

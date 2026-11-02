@@ -1,5 +1,5 @@
 function [orthErr, detErr] = rotationError(R)
-%ROTATIONERROR Deviation of a 3x3 matrix from the rotation group SO(3).
+%ROTATIONERROR  Deviation of a 3x3 matrix from the rotation group SO(3).
 %
 %   [orthErr, detErr] = rotationError(R)
 %
@@ -11,9 +11,9 @@ function [orthErr, detErr] = rotationError(R)
 %
 %   Source: properties det = +1 and R'R = [U],. Metric choice
 %   (Frobenius norm) is an engineering choice.
-arguments
-    R (3,3) double
-end
-orthErr = norm(R.' * R - eye(3), 'fro');
-detErr = abs(det(R) - 1);
+    arguments
+        R (3,3) double
+    end
+    orthErr = norm(R.' * R - eye(3), 'fro');
+    detErr = abs(det(R) - 1);
 end

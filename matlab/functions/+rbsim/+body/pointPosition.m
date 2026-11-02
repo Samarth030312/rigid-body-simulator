@@ -1,5 +1,5 @@
 function pA = pointPosition(O_A, R_AB, pB)
-%POINTPOSITION World position of body points: ^A p = ^A O_B + ^A_B[R] ^B p.
+%POINTPOSITION  World position of body points: ^A p = ^A O_B + ^A_B[R] ^B p.
 %
 %   pA = pointPosition(O_A, R_AB, pB)
 %
@@ -10,10 +10,10 @@ function pA = pointPosition(O_A, R_AB, pB)
 %   Output
 %     pA: 3xN point positions in {A}, m.
 %
-arguments
-    O_A (3,1) double {mustBeFinite}
-    R_AB (3,3) double {mustBeFinite}
-    pB (3,:) double {mustBeFinite}
-end
-pA = O_A + R_AB * pB;
+    arguments
+        O_A (3,1) double {mustBeFinite}
+        R_AB (3,3) double {mustBeFinite}
+        pB (3,:) double {mustBeFinite}
+    end
+    pA = O_A + R_AB * pB;
 end

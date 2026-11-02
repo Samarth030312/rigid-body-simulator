@@ -1,5 +1,5 @@
 function p = defaults()
-%DEFAULTS Default parameters of the planar 3R manipulator (SI units).
+%DEFAULTS  Default parameters of the planar 3R manipulator (SI units).
 %
 %   p = rbsim.robot.defaults
 %
@@ -23,18 +23,18 @@ function p = defaults()
 %             'trajectory',.tau (1x3 N m),.qTargetDeg,.Kp,.Kd,
 %.gravityComp (logical),.duration (s, trajectory)
 %.tFinal,.dt,.outputEvery  integration settings (RK4, ADR-0009)
-p.l = [0.5 0.4 0.3];
-p.m = [3.0 2.0 1.0];
-p.r = p.l / 2;
-p.width = [0.05 0.04 0.03];
-p.Izz = p.m .* (p.l.^2 + p.width.^2) / 12;
-p.g = 9.81;
-p.damping = [0 0 0];
-p.q0 = [30 -20 10];
-p.qd0 = [0 0 0];
-p.control = struct('mode', 'free', 'tau', [0 0 0], 'qTargetDeg', [90 -45 -30], ...
-    'Kp', [200 120 40], 'Kd', [40 20 6], 'gravityComp', true, 'duration', 2);
-p.tFinal = 5;
-p.dt = 1e-3;
-p.outputEvery = 10;
+    p.l = [0.5 0.4 0.3];
+    p.m = [3.0 2.0 1.0];
+    p.r = p.l / 2;
+    p.width = [0.05 0.04 0.03];
+    p.Izz = p.m .* (p.l.^2 + p.width.^2) / 12;
+    p.g = 9.81;
+    p.damping = [0 0 0];
+    p.q0 = [30 -20 10];
+    p.qd0 = [0 0 0];
+    p.control = struct('mode', 'free', 'tau', [0 0 0], 'qTargetDeg', [90 -45 -30], ...
+        'Kp', [200 120 40], 'Kd', [40 20 6], 'gravityComp', true, 'duration', 2);
+    p.tFinal = 5;
+    p.dt = 1e-3;
+    p.outputEvery = 10;
 end

@@ -1,5 +1,5 @@
 function [value, alignment, faceIndex] = topFace(R, G)
-%TOPFACE Face value pointing up (+Z of {A}) for orientation ^A_B[R].
+%TOPFACE  Face value pointing up (+Z of {A}) for orientation ^A_B[R].
 %
 %   [value, alignment, faceIndex] = rbsim.dice.topFace(R, G)
 %
@@ -7,11 +7,11 @@ function [value, alignment, faceIndex] = topFace(R, G)
 %. The top face is the one whose normal has the largest +Z_A
 %   component; alignment = that component (1 = perfectly flat).
 %   Outcome rule: the face whose outward normal is most nearly vertical.
-arguments
-    R (3,3) double
-    G struct
-end
-nz = R(3, :) * G.normals;         % Z_A component of every face normal
-[alignment, faceIndex] = max(nz);
-value = G.values(faceIndex);
+    arguments
+        R (3,3) double
+        G struct
+    end
+    nz = R(3, :) * G.normals;         % Z_A component of every face normal
+    [alignment, faceIndex] = max(nz);
+    value = G.values(faceIndex);
 end

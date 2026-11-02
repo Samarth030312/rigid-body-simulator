@@ -15,5 +15,5 @@ function app = rigid_body_lab()
 %   The app computes no mechanics of its own: it reads the forms, calls
 %   rbsim.dice.simulate, rbsim.robot.simulate or rbsim.fourbar.simulate, and draws
 %   what comes back (rbsim.viz).
-    app = RigidBodyLabApp();
+        app = RigidBodyLabApp();
 end

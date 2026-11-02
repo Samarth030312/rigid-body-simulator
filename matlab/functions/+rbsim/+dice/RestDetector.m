@@ -1,5 +1,5 @@
 classdef RestDetector < handle
-    %RESTDETECTOR Stateful "dice has come to rest" test for integrateRK4 StopFcn.
+    %RESTDETECTOR  Stateful "dice has come to rest" test for integrateRK4 StopFcn.
     %
     %   det = RestDetector(p, G, holdTime)
     %   stop = det.check(t, x)

@@ -1,5 +1,5 @@
 function I = inertiaCube(m, a)
-%INERTIACUBE Inertia matrix of a uniform cube about its centre of mass.
+%INERTIACUBE  Inertia matrix of a uniform cube about its centre of mass.
 %
 %   I = inertiaCube(m, a)
 %
@@ -10,9 +10,9 @@ function I = inertiaCube(m, a)
 %         through C, because the cube's inertia is isotropic).
 %
 %   Source: box formula  with a = b = c.
-arguments
-    m (1,1) double {mustBePositive, mustBeFinite}
-    a (1,1) double {mustBePositive, mustBeFinite}
-end
-I = rbsim.body.inertiaBox(m, a, a, a);
+    arguments
+        m (1,1) double {mustBePositive, mustBeFinite}
+        a (1,1) double {mustBePositive, mustBeFinite}
+    end
+    I = rbsim.body.inertiaBox(m, a, a, a);
 end

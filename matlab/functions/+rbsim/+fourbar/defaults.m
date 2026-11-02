@@ -1,5 +1,5 @@
 function p = defaults()
-%DEFAULTS Default four-bar mechanism parameters (SI units).
+%DEFAULTS  Default four-bar mechanism parameters (SI units).
 %
 %   p = rbsim.fourbar.defaults
 %
@@ -24,18 +24,18 @@ function p = defaults()
 %.loadTorque (N m on link 3, e.g. resisting load)
 %.damping (N m s/rad, viscous at the crank bearing)
 %.tFinal,.dt,.outputEvery
-p.l = [0.40 0.12 0.36 0.28];
-p.m = [0.30 0.80 0.60];
-p.r = p.l(2:4) / 2;
-p.width = [0.02 0.02 0.02];
-p.Izz = p.m .* (p.l(2:4).^2 + p.width.^2) / 12;
-p.g = 9.81;
-p.branch = 1;
-p.theta0Deg = 60;
-p.thetaDot0Deg = 360;
-p.drive = struct('mode', 'free', 'torque', 0.5, 'speedDeg', 360, ...
-    'loadTorque', 0, 'damping', 0);
-p.tFinal = 3;
-p.dt = 1e-3;
-p.outputEvery = 5;
+    p.l = [0.40 0.12 0.36 0.28];
+    p.m = [0.30 0.80 0.60];
+    p.r = p.l(2:4) / 2;
+    p.width = [0.02 0.02 0.02];
+    p.Izz = p.m .* (p.l(2:4).^2 + p.width.^2) / 12;
+    p.g = 9.81;
+    p.branch = 1;
+    p.theta0Deg = 60;
+    p.thetaDot0Deg = 360;
+    p.drive = struct('mode', 'free', 'torque', 0.5, 'speedDeg', 360, ...
+        'loadTorque', 0, 'damping', 0);
+    p.tFinal = 3;
+    p.dt = 1e-3;
+    p.outputEvery = 5;
 end

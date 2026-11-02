@@ -1,5 +1,5 @@
 function Rn = orthonormalize(R)
-%ORTHONORMALIZE Nearest proper rotation matrix (Frobenius sense) to R.
+%ORTHONORMALIZE  Nearest proper rotation matrix (Frobenius sense) to R.
 %
 %   Rn = orthonormalize(R)
 %
@@ -8,10 +8,10 @@ function Rn = orthonormalize(R)
 %   Method: SVD R = U S V', Rn = U diag(1,1,det(U V')) V'.
 %
 %   The standard polar (SVD) projection onto SO(3).
-arguments
-    R (3,3) double {mustBeFinite}
-end
-[U, ~, V] = svd(R);
-D = diag([1, 1, sign(det(U * V.'))]);
-Rn = U * D * V.';
+    arguments
+        R (3,3) double {mustBeFinite}
+    end
+    [U, ~, V] = svd(R);
+    D = diag([1, 1, sign(det(U * V.'))]);
+    Rn = U * D * V.';
 end

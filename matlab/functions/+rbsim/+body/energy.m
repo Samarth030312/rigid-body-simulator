@@ -1,5 +1,5 @@
 function [T, V, H_A, P_A] = energy(x, m, I_B, g_A)
-%ENERGY Kinetic/potential energy and momenta of a free rigid body.
+%ENERGY  Kinetic/potential energy and momenta of a free rigid body.
 %
 %   [T, V, H_A, P_A] = rbsim.body.energy(x, m, I_B, g_A)
 %
@@ -15,15 +15,15 @@ function [T, V, H_A, P_A] = energy(x, m, I_B, g_A)
 %     P_A: 3x1 linear momentum m V_C in {A}, kg*m/s
 %
 %   Note: w.[I]w is frame-independent, so the body-frame form is used.
-arguments
-    x (18,1) double
-    m (1,1) double {mustBePositive}
-    I_B (3,3) double
-    g_A (3,1) double
-end
-[r, v, R, wb] = rbsim.body.unpack(x);
-T = 0.5 * m * (v.' * v) + 0.5 * wb.' * (I_B * wb);
-V = -m * (g_A.' * r);
-H_A = R * (I_B * wb);
-P_A = m * v;
+    arguments
+        x (18,1) double
+        m (1,1) double {mustBePositive}
+        I_B (3,3) double
+        g_A (3,1) double
+    end
+    [r, v, R, wb] = rbsim.body.unpack(x);
+    T = 0.5 * m * (v.' * v) + 0.5 * wb.' * (I_B * wb);
+    V = -m * (g_A.' * r);
+    H_A = R * (I_B * wb);
+    P_A = m * v;
 end

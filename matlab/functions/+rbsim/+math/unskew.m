@@ -1,5 +1,5 @@
 function w = unskew(S)
-%UNSKEW Extract the 3-vector from a (near) skew-symmetric matrix.
+%UNSKEW  Extract the 3-vector from a (near) skew-symmetric matrix.
 %
 %   w = unskew(S)
 %
@@ -13,9 +13,9 @@ function w = unskew(S)
 %   Source: inverse of the layout in. Symmetric-part rejection
 %   is an engineering choice.
 %   See also SKEW.
-arguments
-    S (3,3) double {mustBeFinite}
-end
-A = 0.5 * (S - S.');
-w = [A(3,2); A(1,3); A(2,1)];
+    arguments
+        S (3,3) double {mustBeFinite}
+    end
+    A = 0.5 * (S - S.');
+    w = [A(3,2); A(1,3); A(2,1)];
 end

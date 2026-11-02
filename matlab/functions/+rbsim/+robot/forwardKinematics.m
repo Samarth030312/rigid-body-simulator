@@ -1,5 +1,5 @@
 function fk = forwardKinematics(q, p)
-%FORWARDKINEMATICS Position and orientation of every frame of the planar 3R.
+%FORWARDKINEMATICS  Position and orientation of every frame of the planar 3R.
 %
 %   fk = rbsim.robot.forwardKinematics(q, p)
 %
@@ -17,20 +17,20 @@ function fk = forwardKinematics(q, p)
 %     ^0 O_{i+1} = ^0 O_i + ^0_i[R] ^i O_{i+1},  ^i O_{i+1} = [l_i; 0; 0]
 %     ^0 C_i     = ^0 O_i + ^0_i[R] [r_i; 0; 0]
 %   {Tool} is at the end of link 3, parallel to {3}.
-R = eye(3);
-O = zeros(3, 1);
-fk.R = cell(1, 4);
-fk.O = zeros(3, 4);
-fk.C = zeros(3, 3);
-for i = 1:3
-    R = R * rbsim.math.rotZ(q(i));
-    fk.R{i} = R;
-    fk.O(:, i) = O;
-    fk.C(:, i) = O + R * [p.r(i); 0; 0];
-    O = O + R * [p.l(i); 0; 0];
-end
-fk.R{4} = R;
-fk.O(:, 4) = O;
-fk.tool = O;
-fk.phi = sum(q);
+    R = eye(3);
+    O = zeros(3, 1);
+    fk.R = cell(1, 4);
+    fk.O = zeros(3, 4);
+    fk.C = zeros(3, 3);
+    for i = 1:3
+        R = R * rbsim.math.rotZ(q(i));
+        fk.R{i} = R;
+        fk.O(:, i) = O;
+        fk.C(:, i) = O + R * [p.r(i); 0; 0];
+        O = O + R * [p.l(i); 0; 0];
+    end
+    fk.R{4} = R;
+    fk.O(:, 4) = O;
+    fk.tool = O;
+    fk.phi = sum(q);
 end

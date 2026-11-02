@@ -1,5 +1,5 @@
 function x = pack(r, v, R, omegaB)
-%PACK Assemble the 18x1 rigid-body state vector.
+%PACK  Assemble the 18x1 rigid-body state vector.
 %
 %   x = rbsim.body.pack(r, v, R, omegaB)
 %
@@ -10,11 +10,11 @@ function x = pack(r, v, R, omegaB)
 %     x(16:18) ^A w_B^b body-fixed angular velocity, components in {B}, rad/s
 %
 %   See also RBUNPACK.
-arguments
-    r (3,1) double
-    v (3,1) double
-    R (3,3) double
-    omegaB (3,1) double
-end
-x = [r; v; R(:); omegaB];
+    arguments
+        r (3,1) double
+        v (3,1) double
+        R (3,3) double
+        omegaB (3,1) double
+    end
+    x = [r; v; R(:); omegaB];
 end

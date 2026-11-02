@@ -60,19 +60,19 @@ showResult(res, 'fourbar', ANIMATE);
 
 %% helper
 function showResult(res, kind, animate)
-f = figure('Name', kind, 'Position', [60 60 1300 650], 'Color', rbsim.viz.theme().surface);
-tl = tiledlayout(f, 2, 4, 'TileSpacing', 'compact', 'Padding', 'compact');
-ax = nexttile(tl, 1, [2 2]);
-switch kind
-    case 'dice',    h = rbsim.viz.diceScene(ax, res);    upd = @rbsim.viz.diceUpdate;
-    case 'robot',   h = rbsim.viz.robotScene(ax, res);   upd = @rbsim.viz.robotUpdate;
-    case 'fourbar', h = rbsim.viz.fourbarScene(ax, res); upd = @rbsim.viz.fourbarUpdate;
-end
-cur = rbsim.viz.dashboard([nexttile(tl, 3), nexttile(tl, 4), nexttile(tl, 7), nexttile(tl, 8)], res, kind);
-ks = numel(res.t);
-if animate, ks = unique(round(linspace(1, numel(res.t), min(numel(res.t), 250)))); end
-for k = ks
-    if ~isvalid(f), return; end
-    upd(h, k); rbsim.viz.setCursor(cur, res.t(k)); drawnow limitrate;
-end
+    f = figure('Name', kind, 'Position', [60 60 1300 650], 'Color', rbsim.viz.theme().surface);
+    tl = tiledlayout(f, 2, 4, 'TileSpacing', 'compact', 'Padding', 'compact');
+    ax = nexttile(tl, 1, [2 2]);
+    switch kind
+        case 'dice',    h = rbsim.viz.diceScene(ax, res);    upd = @rbsim.viz.diceUpdate;
+        case 'robot',   h = rbsim.viz.robotScene(ax, res);   upd = @rbsim.viz.robotUpdate;
+        case 'fourbar', h = rbsim.viz.fourbarScene(ax, res); upd = @rbsim.viz.fourbarUpdate;
+    end
+    cur = rbsim.viz.dashboard([nexttile(tl, 3), nexttile(tl, 4), nexttile(tl, 7), nexttile(tl, 8)], res, kind);
+    ks = numel(res.t);
+    if animate, ks = unique(round(linspace(1, numel(res.t), min(numel(res.t), 250)))); end
+    for k = ks
+        if ~isvalid(f), return; end
+        upd(h, k); rbsim.viz.setCursor(cur, res.t(k)); drawnow limitrate;
+    end
 end

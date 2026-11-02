@@ -1,5 +1,5 @@
 function theta = rotToEulerXYZ(R)
-%ROTTOEULERXYZ Body-fixed X-Y-Z Euler angles from a rotation matrix.
+%ROTTOEULERXYZ  Body-fixed X-Y-Z Euler angles from a rotation matrix.
 %
 %   theta = rotToEulerXYZ(R)
 %
@@ -12,20 +12,20 @@ function theta = rotToEulerXYZ(R)
 %
 %   Singular case r13 = +-1 (gimbal lock):
 %   t3 = 0, t1 = +-atan2(r21, r22)).
-arguments
-    R (3,3) double {mustBeFinite}
-end
-r13 = R(1,3);
-tolSing = 1e-12;
-if abs(abs(r13) - 1) > tolSing
-    t2 = atan2(r13, sqrt(R(1,1)^2 + R(1,2)^2));
-    c2 = cos(t2);
-    t1 = atan2(-R(2,3) / c2, R(3,3) / c2);
-    t3 = atan2(-R(1,2) / c2, R(1,1) / c2);
-elseif r13 > 0
-    t1 = atan2(R(2,1), R(2,2)); t2 = pi/2; t3 = 0;
-else
-    t1 = -atan2(R(2,1), R(2,2)); t2 = -pi/2; t3 = 0;
-end
-theta = [t1 t2 t3];
+    arguments
+        R (3,3) double {mustBeFinite}
+    end
+    r13 = R(1,3);
+    tolSing = 1e-12;
+    if abs(abs(r13) - 1) > tolSing
+        t2 = atan2(r13, sqrt(R(1,1)^2 + R(1,2)^2));
+        c2 = cos(t2);
+        t1 = atan2(-R(2,3) / c2, R(3,3) / c2);
+        t3 = atan2(-R(1,2) / c2, R(1,1) / c2);
+    elseif r13 > 0
+        t1 = atan2(R(2,1), R(2,2)); t2 = pi/2; t3 = 0;
+    else
+        t1 = -atan2(R(2,1), R(2,2)); t2 = -pi/2; t3 = 0;
+    end
+    theta = [t1 t2 t3];
 end

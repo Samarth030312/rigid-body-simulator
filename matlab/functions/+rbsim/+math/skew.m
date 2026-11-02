@@ -1,5 +1,5 @@
 function S = skew(w)
-%SKEW Skew-symmetric matrix [Omega] of a 3-vector, so that S*p = cross(w,p).
+%SKEW  Skew-symmetric matrix [Omega] of a 3-vector, so that S*p = cross(w,p).
 %
 %   S = skew(w)
 %
@@ -13,10 +13,10 @@ function S = skew(w)
 %
 %   Source:  (layout of the angular velocity matrix).
 %   See also UNSKEW.
-arguments
-    w (3,1) double {mustBeFinite}
-end
-S = [ 0    -w(3)  w(2);
-      w(3)  0    -w(1);
-     -w(2)  w(1)  0   ];
+    arguments
+        w (3,1) double {mustBeFinite}
+    end
+    S = [ 0    -w(3)  w(2);
+          w(3)  0    -w(1);
+         -w(2)  w(1)  0   ];
 end

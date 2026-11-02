@@ -1,5 +1,5 @@
 function R = rotSpaceFixed(seq, angles)
-%ROTSPACEFIXED Orientation from successive rotations about space-fixed axes of {A}.
+%ROTSPACEFIXED  Orientation from successive rotations about space-fixed axes of {A}.
 %
 %   R = rotSpaceFixed(seq, angles)
 %
@@ -15,10 +15,10 @@ function R = rotSpaceFixed(seq, angles)
 %   by expressing each fixed axis in the current body frame; final result s36).
 %   Equivalence with body-fixed reversed sequence:.
 %   See also ROTBODYFIXED.
-arguments
-    seq {mustBeTextScalar}
-    angles (1,:) double {mustBeFinite}
-end
-seq = upper(char(seq));
-R = rbsim.math.rotBodyFixed(fliplr(seq), fliplr(angles));
+    arguments
+        seq {mustBeTextScalar}
+        angles (1,:) double {mustBeFinite}
+    end
+    seq = upper(char(seq));
+    R = rbsim.math.rotBodyFixed(fliplr(seq), fliplr(angles));
 end
