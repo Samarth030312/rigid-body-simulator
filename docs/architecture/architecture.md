@@ -1,7 +1,7 @@
 # System Architecture
 
 Status: **FROZEN — 2026-09-21** (layering and folder contract). Conventions:
-[`CONVENTIONS.md`](CONVENTIONS.md). Decisions: [`../DECISIONS.md`](../DECISIONS.md).
+[`CONVENTIONS.md`](CONVENTIONS.md). Decisions: [`../knowledge-base/ENGINEERING_DECISIONS.md`](../knowledge-base/ENGINEERING_DECISIONS.md).
 
 ## Layers and folders
 
