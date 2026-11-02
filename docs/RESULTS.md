@@ -17,7 +17,7 @@ A 16 mm, 4.7 g cube thrown from 0.15 m with 0.4 m/s across the floor and 33 rad/
   never rises: the contact model only ever removes energy.
 - **The outcome is produced, not chosen.** The face is read from the final orientation.
   Eight throws differing only in initial spin settle on at least three different faces, and
-  every one of them lands flat (the uppermost normal within 0.04° of vertical). Repeating a
+  every one of them lands flat (the uppermost normal is vertical to better than 0.01°). Repeating a
   throw repeats the face exactly; halving the time step does not change it.
 - **The rotation stays a rotation.** The largest correction back onto SO(3) over a whole
   throw is about 7×10⁻⁷, and the orthonormality error never exceeds 2×10⁻¹⁵.
@@ -57,5 +57,5 @@ Ground 0.40 m, crank 0.12 m, coupler 0.36 m, rocker 0.28 m — a crank-rocker.
   the driving torque times the crank rate matches the rate of change of the mechanism's
   energy.
 - **The reactions are real numbers, not a by-product.** Peak pin force at the crank bearing
-  is about 16 N for these masses at this speed — the quantity a designer would size a
+  is 15.9 N for these masses at this speed — the quantity a designer would size a
   bearing from, available because the dynamics were assembled from free-body diagrams.
