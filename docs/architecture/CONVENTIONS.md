@@ -45,11 +45,27 @@ A positive angle turns counter-clockwise about the axis seen from its positive e
 
 ### 2.2 Axis and angle
 
-Rodrigues' formula, `R(k̂, φ)`, with the inverse
-`φ = acos((tr R − 1)/2)` and `k̂ = (r32−r23, r13−r31, r21−r12)ᵀ / (2 sin φ)` for
-`φ ∉ {0, π}`. The two singular cases are handled explicitly: `φ ≈ 0` returns `k̂ = Ẑ` by
-convention, and `φ ≈ π` takes the axis from the largest diagonal entry of `(R + I)/2`
-(**choice**, since the axis is otherwise undetermined or sign-free there).
+Rodrigues' formula, `R(k̂, φ)`. The inverse splits `R` into its antisymmetric and
+symmetric parts, `v = ½(r32−r23, r13−r31, r21−r12)ᵀ = sin φ · k̂` and
+`c = (tr R − 1)/2 = cos φ`, and reads
+
+| | |
+|---|---|
+| `φ = atan2(‖v‖, c)` | over the whole range `[0, π]` |
+| `k̂ = v/‖v‖` | while `‖v‖ > √ε` |
+
+The angle comes from `atan2`, **not** from `acos(c)`: `cos(π−d) = −1 + d²/2`, so a
+round-off `e` in the trace displaces an `acos` angle by `√(2e)` — about `3·10⁻⁸` in double
+precision, and the mirror of that at `φ ≈ 0`. `atan2` takes the angle from the sine, where
+the round-off passes through unamplified, and holds it to a few `ε` throughout.
+
+The axis, unlike the angle, genuinely degenerates. `v/‖v‖` carries a relative error of
+about `ε/‖v‖`, while `(R + I)/2 = k̂k̂ᵀ` at `φ = π` gives an axis in error by about `‖v‖`;
+the two are equally good at `‖v‖ = √ε`, which is where the implementation switches
+(**choice**, but a derived one). The conventions at the degeneracies:
+`φ ≈ 0` returns `k̂ = Ẑ`, the axis being undetermined — the angle is still reported
+faithfully rather than snapped to zero — and at `φ ≈ π` the axis is taken from the largest
+diagonal entry of `(R + I)/2`, whose sign is free there since `R(k̂, π) = R(−k̂, π)`.
 
 ### 2.3 Order of successive rotations
 
