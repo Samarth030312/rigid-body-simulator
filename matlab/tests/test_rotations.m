@@ -151,6 +151,46 @@ function testAxisAngleSpecialCases(tc)
     tc.verifyEqual(abs(dot(k, kIn)), 1, 'AbsTol', 1e-9);   % axis sign is free at pi
 end
 
+function testAxisAngleIsWellConditionedNearZeroAndPi(tc)
+% The angle must survive the two ends of its range, where acos((trace-1)/2)
+% does not: there cos(phi) = -1 + d^2/2 for phi = pi - d, so a round-off e in
+% the trace displaces the angle by sqrt(2e) -- about 3e-8 in double precision,
+% which an earlier implementation duly produced. atan2(|v|, c) reads the angle
+% off the sine and keeps it to a few eps across the whole range.
+    k = [1; -1; 2] / sqrt(6);
+    d = [0, logspace(-16, -1, 16), 0.5, 1.0];
+    worst = 0;
+    for phi = [d, pi - d]
+        [~, phiBack] = rbsim.math.rotToAxisAngle(rbsim.math.rotAxisAngle(k, phi));
+        worst = max(worst, abs(phiBack - phi));
+    end
+    tc.verifyLessThan(worst, 1e-14, ...
+        'angle recovery degrades near phi = 0 or phi = pi');
+end
+
+function testAxisAngleAtPiKeepsTheAxis(tc)
+% At phi = pi the antisymmetric part vanishes, so the axis has to come from
+% (R + I)/2 = k k'. Its sign is free there, hence the absolute value.
+    for k = {[1;-1;2]/sqrt(6), [0;0;1], [1;0;0], [0;1;0], [1;1;1]/sqrt(3), ...
+             [0;1;-1]/sqrt(2), [-3;1;0]/sqrt(10)}
+        [kBack, phi] = rbsim.math.rotToAxisAngle(rbsim.math.rotAxisAngle(k{1}, pi));
+        tc.verifyEqual(phi, pi, 'AbsTol', 1e-14);
+        tc.verifyEqual(norm(kBack), 1, 'AbsTol', 1e-14);
+        tc.verifyEqual(abs(dot(kBack, k{1})), 1, 'AbsTol', 1e-14);
+    end
+end
+
+function testAxisAngleRebuildsEveryRandomRotation(tc)
+% Whatever the formula does at the degeneracies, (k, phi) must rebuild R.
+    worst = 0;
+    for i = 1:size(tc.TestData.angles, 1)
+        R = rbsim.math.rotBodyFixed('XYZ', tc.TestData.angles(i,:));
+        [k, phi] = rbsim.math.rotToAxisAngle(R);
+        worst = max(worst, norm(rbsim.math.rotAxisAngle(k, phi) - R, 'fro'));
+    end
+    tc.verifyLessThan(worst, 1e-12);
+end
+
 function testEigenvaluesOfR(tc)
 %: eigenvalues +1, exp(+-i phi) with phi = acos((trace-1)/2).
     R = rbsim.math.rotBodyFixed('XYZ', [0.2 0.9 -0.4]);
