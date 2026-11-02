@@ -60,7 +60,6 @@ function testPerpendicularAxisThinPlate(tc)
 end
 
 function testSymmetricPositiveDefinite(tc)
-%
     I = rbsim.body.inertiaRotate(rbsim.body.inertiaBox(3, 0.5, 0.2, 0.1), rbsim.math.rotBodyFixed('ZYZ', [1 2 3]));
     tc.verifyEqual(I, I.', 'AbsTol', 1e-15);
     tc.verifyGreaterThan(min(eig(I)), 0);

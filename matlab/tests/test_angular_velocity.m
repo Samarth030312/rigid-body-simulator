@@ -5,7 +5,6 @@ function tests = test_angular_velocity
 end
 
 function testSkewIsCrossProduct(tc)
-%
     w = [0.3; -1.2; 2.5]; p = [1.1; 0.4; -0.7];
     tc.verifyEqual(rbsim.math.skew(w) * p, cross(w, p), 'AbsTol', 1e-14);
     tc.verifyEqual(rbsim.math.skew(w).', -rbsim.math.skew(w));

@@ -28,7 +28,6 @@ function testSimpleRotationRightHandRule(tc)
 end
 
 function testRotationOfFortyFiveDegreesAboutZ(tc)
-%
     Rexp = [1/sqrt(2) -1/sqrt(2) 0; 1/sqrt(2) 1/sqrt(2) 0; 0 0 1];
     tc.verifyEqual(rbsim.math.rotZ(pi/4), Rexp, 'AbsTol', tc.TestData.tol);
 end
@@ -41,7 +40,6 @@ function testColumnsAreBodyAxesInA(tc)
 end
 
 function testInverseIsTranspose(tc)
-%
     for i = 1:size(tc.TestData.angles, 1)
         R = rbsim.math.rotBodyFixed('ZYZ', tc.TestData.angles(i,:));
         tc.verifyEqual(R \ eye(3), R.', 'AbsTol', 1e-12);
@@ -104,7 +102,6 @@ function testSpaceFixedByAxisAngleMethod(tc)
 end
 
 function testBodyXYZEqualsSpaceZYX(tc)
-%
     th = deg2rad([60 45 -75]);
     tc.verifyEqual(rbsim.math.rotBodyFixed('XYZ', th), ...
         rbsim.math.rotSpaceFixed('ZYX', fliplr(th)), 'AbsTol', tc.TestData.tol);
