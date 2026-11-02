@@ -1,39 +1,33 @@
-# MATLAB
+# MATLAB / Simulink generated files
 *.asv
 *.m~
 *.autosave
+slprj/
+codegen/
+*.slxc
+*.mex*
 matlab_crash_dump*
 hs_err_pid*
 
-# MATLAB generated artifacts
-slprj/
-codegen/
-*.mex*
-*.slxc
-
-# IDE / OS
-.vscode/
-.idea/
-*.swp
-.DS_Store
-
-# Secrets
-.env
-.env.*
-*.key
-*.pem
-credentials.*
-secrets.*
+# Python
+__pycache__/
+*.py[cod]
+.venv/
 
 # Generated simulation output
-data/output/*
-!data/output/.gitkeep
+results/output/*
+!results/output/.gitkeep
 
-# Local ENR209 source material
-incoming/
-docs/requirements/source/
-docs/lecture_notes/source/
-docs/reference/source_text/
+# Recordings and large media
+*.mp4
+*.mov
+*.avi
+*.mkv
 
-# Claude local machine settings
-.claude/settings.local.json
+# Local credentials and machine files
+.env
+.env.*
+*.pem
+*.key
+.DS_Store
+Thumbs.db

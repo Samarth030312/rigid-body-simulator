@@ -1,0 +1,25 @@
+# Same bytes on Windows, macOS and Linux, whatever core.autocrlf says.
+* text=auto eol=lf
+
+# Windows scripts need CRLF
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+
+# Unix scripts must stay LF (a CRLF shebang does not run)
+*.sh   text eol=lf
+
+# Binary: never converted or diffed as text
+*.slx   binary
+*.mlx   binary
+*.mat   binary
+*.mlapp binary
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.gif   binary
+*.mp4   binary
+*.avi   binary
+*.zip   binary
+*.bin   binary
+
